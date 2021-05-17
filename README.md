@@ -3,7 +3,7 @@
 ### prepared before interviews.
 
 
-#Benefits
+# Benefits
 
 ### Best preparations before interviews
 
@@ -13,20 +13,15 @@
 ### Get a chance for a mock interviews.
 
 
-#What to do
+# What to do
 
 ### Fork this repo
 
-### Make one folder having name(as your enrollment 
-### no. underscore first name i.e.
-### 18UCS032_Aditya) in directory _submission/.
+### Make one folder having name(as your enrollment no. underscore first name i.e. 18UCS032_Aditya) in directory _submission/.
 
-### For everyday days make one folder with name
-### dayX(where X is day corresponding to
-### day of snapCode questions i.e. 1,2,etc.) 
+### For everyday days make one folder with name dayX(where X is day corresponding today of snapCode questions i.e. 1,2,etc.) 
 
 ### and code for everydy questions in dayX folder
 
-### make a pull request once you submit all
-### criteria and questions
+### make a pull request once you submit all criteria and questions
 
