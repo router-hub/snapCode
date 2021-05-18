@@ -4,55 +4,34 @@
 //|x2-x1|>|y2-y1| or|x2-x1|<|y2-y1|.And, this can be calculated by going diagonally untill common so min(dx,dy) + |dx-dy| if(dy>dx), it becomes dy & if(dy<dx), it becomes dx.
 //So, we add max(dx,dy) on every i.
 
-// int is_Safe(int x_cor, int y_cor, int end_x,int end_y)
-// {
-//     return x_cor>=0&&y_cor>=0&&x_cor<end_x&&y_cor<end_y;
-// }
-int bfs(int x1, int y1, int x2, int y2)
+int bfs(int start_x,int start_y,int end_x,int end_y)
 {
-
-    int ans = -1;
-    queue<pair<int,int>> q;
-    set<pair<int,int>> hashset;
-
-    q.push({x1,y1});
-
-    vector<int> dx = {-1,-1,0,1,1,1,0,-1};
-    vector<int> dy = {0,1,1,1,0,-1,-1,-1};
-
+    set<pair<int,int>>st;
+    queue<vector<int>>q;
+    q.push({start_x,start_y,0});
+    vector<pair<int,int>>directions{{0,1},{0,-1},{1,0},{-1,0},{1,1},{-1,-1},{1,-1},{-1,1}};
+    st.insert({start_x,start_y});
+    vector<int>tp;
     while(!q.empty())
     {
-        int qSize = q.size();
-        ans++;
-        for(int i=0;i<qSize;i++)
+        tp=q.front();
+        //IMP!!! This condition needs to be checked here as if the source is 0,0 & des is 0,0 then it will go inside & unnecesarily check for all the other options and will give
+        //wrong answer but instead for shortest path, it should return 0 here only as source & destination are same
+        if(tp[0]==end_x&&tp[1]==end_y)
+                 return tp[2];
+        q.pop();
+        for(auto dir:directions)
         {
-            auto curr = q.front();
-            q.pop();
-
-            if(curr.first == x2 and curr.second == y2)
+            int new_x=tp[0]+dir.first;
+            int new_y=tp[1]+dir.second;
+            if(st.find({new_x,new_y})==st.end())
             {
-                return ans;
-                break;
-            }
-
-            hashset.insert(curr);
-
-            for(int delta = 0;delta<8;delta++)
-            {
-                int newX = curr.first + dx[delta];
-                int newY = curr.second + dy[delta];
-
-                if(hashset.find({newX, newY}) == hashset.end())
-                {
-                    q.push({newX, newY});
-                    hashset.insert({newX, newY});
-                }
-
+                st.insert({new_x,new_y});
+                q.push({new_x,new_y,tp[2]+1});
             }
         }
     }
     return -1;
-
 }
 
 int Solution::coverPoints(vector<int> &A, vector<int> &B) {
