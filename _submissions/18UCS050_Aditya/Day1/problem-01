@@ -1,0 +1,14 @@
+int Solution::coverPoints(vector<int> &A, vector<int> &B) {
+    int n=A.size();
+    int i=0,j=0;
+    int count=0;
+    while(i<n-1)
+    {
+     if(abs(A[i+1]-A[i])>abs(B[i+1]-B[i]))
+     count=count+abs(A[i+1]-A[i]);
+     else
+     count=count+abs(B[i+1]-B[i]);
+     i++;
+    }
+    return count;
+}
