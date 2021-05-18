@@ -1,0 +1,27 @@
+int Solution::isPalindrome(string A) {
+    int l=0,h=A.length()-1,temp;
+    temp=0;
+    while(l<h)
+    {
+        if(isalnum(A[l]) && isalnum(A[h]))
+        {
+            if(abs(A[l]-A[h])==32|| abs((A[l]-A[h])==0))
+            {
+                l++;
+                h--;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        else
+        {
+        if(!isalnum(A[l]))
+        l++;
+        if(!isalnum(A[h]))
+        h--;
+        }
+    }
+    return 1;
+}
