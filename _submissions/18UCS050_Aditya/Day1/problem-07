@@ -1,0 +1,24 @@
+ListNode* Solution::solve(ListNode* A) {
+    int c=0;
+    ListNode* t=A;
+    while(t)
+    {
+        c+=1-t->val;
+        t=t->next;
+    }
+    ListNode* u=A;
+    while(u)
+    {
+        if(c)
+        {
+            u->val=0;
+            c--;
+        }
+        else
+        {
+            u->val=1;
+        }
+        u=u->next;
+    }
+    return A;
+}
