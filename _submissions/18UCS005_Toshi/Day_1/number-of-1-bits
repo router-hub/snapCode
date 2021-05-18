@@ -1,4 +1,5 @@
-public class Solution {
+
+  public class Solution {
     public int numSetBits(long a) 
     {
       int count = 0;
@@ -10,4 +11,3 @@ public class Solution {
         return count;
     }
 }
-  
