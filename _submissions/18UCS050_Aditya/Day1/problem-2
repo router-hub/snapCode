@@ -1,0 +1,27 @@
+vector<int> Solution::primesum(int A) {
+    int i,k,n;
+    for(i=2;i<A-2;i++)
+    {
+        int temp=1;
+        for(k=2;k*k<=i;k++)
+        {
+            if(i%k==0)
+            {temp=0;break;}
+        }
+        if(temp==1)
+        {
+            n=A-i;
+            int temp1=1;
+            for(k=2;k*k<=n;k++)
+            {
+                if(n%k==0)
+                {
+                    temp1=0;break;
+                }
+            }
+        
+        if(temp1==1)
+        return {i,n}; 
+    }
+   }
+}
