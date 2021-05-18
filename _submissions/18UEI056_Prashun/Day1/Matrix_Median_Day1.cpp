@@ -1,6 +1,5 @@
 /*
 Given a matrix of integers A of size N x M in which each row is sorted.
-
 Find an return the overall median of the matrix A.
 */
 
