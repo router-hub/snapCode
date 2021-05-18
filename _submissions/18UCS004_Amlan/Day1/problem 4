@@ -1,11 +1,24 @@
 public class Solution {
-    public int numSetBits(long a) {
-         int count = 0;
-         while(a != 0){
-             a = a & (a - 1);
-             count++;
-         }
-         return count;
-         //return Long.bitCount(a);
+    public int isPalindrome(String A) {
+        A = A.toLowerCase();
+        int i = 0, j = A.length()-1;
+        while(i<=j){
+            if(!f(A.charAt(i))){
+                i++;
+            }
+            else if(!f(A.charAt(j))){
+                j--;
+            }
+            else if(A.charAt(i)!=A.charAt(j)){
+                return 0;
+            }else{
+                i++;
+                j--;
+            }
+        }
+        return 1;
+    }
+    private static boolean f(char c){
+        return (c>=48 && c<=57)||(c >= 65 && c <= 90) || (c >= 97 && c <= 122);
     }
 }
