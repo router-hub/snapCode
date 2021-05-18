@@ -1,0 +1,68 @@
+ListNode* merge(ListNode* A, ListNode* B){
+    ListNode* temp;
+    if(A->val <= B->val){
+        temp=A;
+        A=A->next;
+    }
+    else{
+        temp=B;
+        B=B->next;
+    }
+    while(A && B){
+        if(A->val <= B->val){
+            temp->next = A;
+            A=A->next;
+        }
+        else{
+            temp->next=B;
+            B=B->next;
+        }
+        temp=temp->next;
+    }
+    if(A)
+      temp->next=A;
+    if(B)
+      temp->next=B;
+    return temp;
+ }
+
+ListNode* Solution::solve(ListNode* A) {
+    if(A==NULL || A->next == NULL)
+       return A;
+       
+    ListNode* slow=A, * fast=A,*prev=A;
+    
+    while(fast && fast->next){
+        prev=slow;
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    prev->next=NULL;
+    A = solve(A);
+    slow = solve(slow);
+    A = merge(A, slow);
+    return A;
+   /* ListNode* head=A;
+    int x=0,y=0;
+    while(head){
+        if(head->val)
+           x++;
+        else
+           y++;
+        head=head->next;
+    }
+    head = A;
+    while(head){
+        if(y){
+            head->val = 0;
+            y--;
+        }
+        else
+        {
+            head->val = 1;
+            x--;
+        }
+        head=head->next;
+    }
+    return A;*/
+}
