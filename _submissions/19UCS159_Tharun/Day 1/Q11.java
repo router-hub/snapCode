@@ -2,6 +2,9 @@
 /*
 Ways to form Max Heap : https://www.interviewbit.com/problems/ways-to-form-max-heap/
 
+Max Heap is a special kind of complete binary tree in which for every node the value present in that node is greater than the value present in it’s children nodes.
+
+Find the number of distinct Max Heap can be made from A distinct integers.
 */
 
 public class Q11 {
@@ -20,32 +23,20 @@ public class Q11 {
     long[] dp = new long[A + 1];
     dp[0] = 1;
     for (int i = 1; i <= A; i++) {
-      int total_nodes = 0; // all the nodes assuming perfect and complete binary tree
+      // finding left nodes this subtree rooted at i has
+      int complete_nodes = 0, total = i - 1;
       int level = 1;
-      int complete_nodes = 0; // all the nodes with full levels
-      int current_nodes = i - 1; // leaving the top element, as it is the largest
-      while (total_nodes < current_nodes) {
-        complete_nodes = total_nodes;
-        total_nodes += (1 << level);
+      while (complete_nodes + (1 << level) <= total) {
+        complete_nodes += (1 << level);
         level++;
       }
-      int left_nodes = 0, right_nodes = 0;
-      int last_nodes = current_nodes - complete_nodes;
-      int last_full_nodes = (total_nodes - complete_nodes);
-      if (last_nodes >= last_full_nodes / 2) {
-        left_nodes = last_full_nodes / 2;
-        right_nodes = (current_nodes - complete_nodes - last_full_nodes / 2);
-      } else {
-        left_nodes = current_nodes - complete_nodes;
-        right_nodes = 0;
-      }
-      left_nodes += complete_nodes / 2;
-      right_nodes += complete_nodes / 2;
-      dp[i] = ncr[current_nodes][left_nodes];
-      dp[i] = (dp[i] * dp[left_nodes]) % mod;
-      dp[i] = (dp[i] * dp[right_nodes]) % mod;
+      int last_level_nodes = total - complete_nodes;
+      int left = complete_nodes / 2;
+      left += Math.min(last_level_nodes, (1 << (level - 1)));
+      dp[i] = ncr[i - 1][left];
+      dp[i] = (dp[i] * dp[left]) % mod;
+      dp[i] = (dp[i] * dp[i - left - 1]) % mod;
     }
     return (int) dp[A];
   }
-
 }
