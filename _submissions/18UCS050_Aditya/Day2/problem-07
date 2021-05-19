@@ -1,0 +1,23 @@
+ListNode* Solution::partition(ListNode* A, int B) {
+    ListNode* t1=new ListNode(0),*t2=new ListNode(0);
+    ListNode *u=t1,*v=t2;
+    while(A)
+    {
+        if(A->val<B)
+        {
+                u->next=A;
+                A=A->next;
+                u=u->next;
+        }
+        else 
+        {
+                v->next=A;
+                A=A->next;
+                v=v->next;
+        }
+    }
+    u->next=t2->next;
+    v->next=NULL;
+    t1=t1->next;
+    return t1;
+}
