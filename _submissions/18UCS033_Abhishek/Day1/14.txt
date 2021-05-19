@@ -1,0 +1,41 @@
+int Solution::maxp3(vector<int> &A) {
+    int pmx1=INT_MIN,pmx2=INT_MIN,pmx3=INT_MIN;
+    int pmn1=INT_MAX,pmn2=INT_MAX,pmn3=INT_MAX;
+    for(int i=0;i<A.size();i++)
+    {
+        if(pmx1<A[i])
+        {
+            pmx3=pmx2;
+            pmx2=pmx1;
+            pmx1=A[i];
+        }
+        else if(pmx2<A[i])
+        {
+            pmx3=pmx2;
+            pmx2=A[i];
+        }
+        else if(pmx3<A[i])
+        {
+            pmx3=A[i];
+        }
+        
+        if(pmn1>A[i])
+        {
+            pmn3=pmn2;
+            pmn2=pmn1;
+            pmn1=A[i];
+        }
+        else if(pmn2>A[i])
+        {
+            pmn3=pmn2;
+            pmn2=A[i];
+        }
+        else if(pmn3>A[i])
+        {
+            pmn3=A[i];
+        }
+    }
+    // cout<<pmn1<<" "<<pmn2<<" "<<pmn3<<" \n";
+    int ans=max(pmx1*pmx2*pmx3,pmn1*pmn2*pmx1);
+    return ans;
+}
