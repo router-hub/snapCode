@@ -28,6 +28,7 @@ using namespace std;
             cout << c << " "; \
         cout << endl;         \
     }
+
 // _______________________________________________________________________________________________________________________________________________________________________________
 // _______________________________________________________________________________________________________________________________________________________________________________
 // _______________________________________________________________________________________________________________________________________________________________________________
@@ -39,7 +40,7 @@ private:
 public:
     Solution(/* args */);
     ~Solution();
-    string longestCommonPrefix(vector<string> &arr);
+    unsigned int reverse(unsigned int A);
 };
 
 Solution::Solution(/* args */)
@@ -50,41 +51,30 @@ Solution::~Solution()
 {
 }
 
-string Solution::longestCommonPrefix(vector<string> &arr)
+unsigned int Solution::reverse(unsigned int A) 
 {
-    int l = arr.size();
-    if (l == 0)
-        return 0;
-    if (l == 1)
-        return arr[0];
-
-    string minString = arr[0];
-
-    for (auto x : arr)
+    vector<int> arr;
+    int n;
+    while(A)
     {
-        if (x.size() < minString.size())
-            minString = x;
+        if(A&1==1) n =1;
+        else n = 0;
+        arr.push_back(n);
+        A = A>>1;
     }
-
-    for (auto x : arr)
+    
+    unsigned int B=0;
+    auto it = arr.begin();
+    int i =31;
+    for(;it!=arr.end();it++,i--)
     {
-        int commonLength = 0;
-        while (minString[commonLength] == x[commonLength])
-        {
-            commonLength++;
-        }
-        minString = minString.substr(0, commonLength);
+        B=B+ (*it * pow(2,i));
     }
-    return minString;
+    return B;
 }
 
 int main()
 {
     fast_cin();
-
-    Solution s;
-    vector<string> arr{"abcdef", "ab", "abcdfasd"};
-    cout << s.longestCommonPrefix(arr) << endl;
-
     return 0;
 }
