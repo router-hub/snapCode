@@ -1,0 +1,42 @@
+public class Solution {
+    public int[] primesum(int A) {
+        int[] a = new int[A + 1];
+        for(int i = 0; i <= A; i++)
+            a[i] = 1;
+        
+        a[0] = 0;
+        a[1] = 0;
+        for(int i = 2; i*i < A; i++){
+            if(a[i] == 1){
+                for(int j = i*i; j <= A; j += i)
+                    a[j] = 0;
+            }
+        }
+        ArrayList<Integer> primes = new ArrayList<>();
+        for(int i = 2; i <= A; i++){
+            if(a[i] == 1){
+                primes.add(i);
+            }
+        }
+        
+        int l = 0;
+        int r = primes.size() - 1;
+        int[] ans = new int[2];
+        while(l <= r){
+            if(primes.get(l) + primes.get(r) == A){
+                ans[0] = primes.get(l);
+                ans[1] = primes.get(r);
+                break;
+            }
+            else if(primes.get(l) + primes.get(r) < A){
+                l++;
+            }else{
+                r--;
+            }
+        }
+        return ans;
+    }
+}
+
+
+ 
