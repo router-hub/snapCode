@@ -1,0 +1,16 @@
+class Solution:
+    # @param A : list of integers
+    # @return an integer
+    def bulbs(self, A):
+        res = 0
+        current_state = 0
+        for i in range(len(A)):
+            if current_state==0:
+                curr_bulb = A[i]
+            else:
+                curr_bulb = 1 if A[i]==0 else 0
+            
+            if curr_bulb == 0:
+                res +=1
+                current_state = 1 if current_state==0 else 0
+        return res
