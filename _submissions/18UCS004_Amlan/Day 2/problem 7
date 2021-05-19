@@ -1,0 +1,25 @@
+public class Solution {
+    public ListNode partition(ListNode head, int B) {
+        ListNode small = new ListNode(0);
+        ListNode higher = new ListNode(0);
+        
+        ListNode smallhead = small, higherhead = higher;
+        
+        while(head != null){
+            if(head.val < B){
+                smallhead.next = head;
+                smallhead = smallhead.next;
+            }
+            else{
+                higherhead.next = head;
+                higherhead = higherhead.next;
+            }
+            head = head.next;
+        }
+        
+        higherhead.next = null;
+        smallhead.next = higher.next;
+        
+        return small.next;
+    }
+}
