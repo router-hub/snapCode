@@ -10,17 +10,14 @@ public class Solution {
 
      class Graph {
         private int V; // No. of vertices
-        private LinkedList<Integer> adj[]; // Adjacency Lists
+        private LinkedList<Integer> adj[]; 
 
-        // Constructor
         Graph(int v) {
             V = v;
             adj = new LinkedList[v];
             for (int i = 0; i < v; i++)
                 adj[i] = new LinkedList();
         }
-
-        // Function which adds an edge from v -> w
         void addEdge(int v, int w) {
             adj[v].add(w);
         }
