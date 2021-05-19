@@ -1,0 +1,17 @@
+int Solution::solve(vector<int> &A) {
+    stack<int> s;
+    int curr=INT_MIN;
+    for(int i=0;i<A.size();i++)
+    {
+            while(s.size()&&A[i]>s.top())
+            {
+                curr=s.top();
+                s.pop();
+            }
+        
+        if(A[i]<curr)
+        return 0;
+        s.push(A[i]);
+    }
+    return 1;
+}
