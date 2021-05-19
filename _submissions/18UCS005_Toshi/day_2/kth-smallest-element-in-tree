@@ -1,0 +1,35 @@
+/**
+ * Definition for binary tree
+ * class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) {
+ *      val = x;
+ *      left=null;
+ *      right=null;
+ *     }
+ * }
+ */
+public class Solution {
+    int count = 0;
+    public int kthsmallest(TreeNode A, int B) 
+    {
+        if(A == null)
+        {
+            return 0;
+        }
+        int left = kthsmallest(A.left, B);
+        if(left != 0)
+        {
+            return left;
+        }
+        count++;
+        if(count == B)
+        {
+            return A.val;
+        }
+        return kthsmallest(A.right,B);
+        
+    }
+}
