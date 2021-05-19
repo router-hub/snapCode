@@ -1,0 +1,12 @@
+int Solution::solve(vector<int> &A, int B) {
+    sort(A.begin(), A.end());
+    for(int i=0; i<A.size(); i++){
+        if(A[i]+B <= A[A.size()-1] && A[i]+B >=A[0]){
+            int x = upper_bound(A.begin(), A.end(), A[i]+B)-A.begin();
+            x--;
+            if(x!=i && A[x]==A[i]+B)
+               return true;
+        }
+    }
+    return false;
+}
