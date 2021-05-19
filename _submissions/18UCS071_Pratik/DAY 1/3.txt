@@ -1,0 +1,10 @@
+import statistics
+class Solution:
+    # @param A : list of list of integers
+    # @return an integer
+    def findMedian(self, A):
+        merged_list=[]
+        for m in A:
+            merged_list+=m
+        return(statistics.median(merged_list))
+        
