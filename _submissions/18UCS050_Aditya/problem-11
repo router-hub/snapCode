@@ -1,0 +1,29 @@
+vector<int> Solution::solve(vector<int> &A, vector<int> &B) {
+    int n = A.size();
+    sort(A.begin(), A.end());
+    sort(B.begin(), B.end());
+    priority_queue<pair<int, pair<int, int>>> q;
+    set<pair<int, int>> s; 
+    q.push(make_pair(A[n-1]+B[n-1], make_pair(n-1, n-1)));
+    s.insert(make_pair(n-1, n-1));
+    vector<int> ans;
+    int k=0;
+    while(k<n){
+        pair<int, pair<int, int>> top = pq.top(); pq.pop();
+        ans.push_back(top.first);  
+        int xi = top.second.first;
+        int yi = top.second.second;
+        
+        if(xi>0 && yi>= 0 && s.find(make_pair(xi, yi-1)) == s.end()){
+            pq.push(make_pair(A[xi]+B[yi-1], make_pair(xi, yi-1)));
+            s.insert(make_pair(xi,yi-1));
+        }
+        if(yi>=0 && xi>0 && s.find(make_pair(xi-1, yi)) == s.end()){
+            pq.push(make_pair(A[xi-1]+B[yi], make_pair(xi-1, yi)));
+            s.insert(make_pair(xi-1,yi));
+        }
+        k++;
+    }
+    
+    return ans;
+}
