@@ -1,0 +1,23 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public int maxSubArray(final List<Integer> A)
+    {
+        int sum = A.get(0);
+        int max = A.get(0);
+        for(int i = 1 ; i < A.size(); i++)
+        {
+            if(sum >= 0)
+            {
+                sum += A.get(i);
+            }
+            else
+            {
+                 sum = A.get(i);
+            }
+            if(sum > max)
+            {
+                max = sum;
+            }
+        }
+        return max;
+    }
