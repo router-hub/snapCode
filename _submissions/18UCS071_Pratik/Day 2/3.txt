@@ -1,0 +1,6 @@
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def sqrt(self, A):
+        return int(pow(A,0.5))
+        
