@@ -1,0 +1,32 @@
+int Solution::maxp3(vector<int> &A) {
+   int a,b,c,x,y;
+   
+   a=b=c=INT_MIN;
+   x=y=INT_MAX;
+   for(int val:A){
+       
+       if(val>a){
+           c=b,b=a,a=val;
+       }
+       else if(val>b){
+           c=b,b=val;
+       }
+       else if(val>c)c=val;
+       
+       if(val<x){
+           y=x,x=val;
+       }else if(val<y) y=val;
+       
+   }
+   
+    
+}
+/*
+BRUTE FORCE
+O(N*LOG(N)
+
+OPTIMAL
+o(n)
+
+
+*/
