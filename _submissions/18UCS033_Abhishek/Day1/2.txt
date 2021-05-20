@@ -1,0 +1,64 @@
+// int p[10000001];
+// void prime()
+// {
+//     memset(p,0,sizeof(p));
+//     for(int i=2;i<sqrt(10000001);i++)
+//     {
+//         if(p[i]==1)
+//         continue;
+//         for(int j=i+i;j<10000001;j+=i)
+//         p[j]=1;
+//     }
+// }
+vector<int> Solution::primesum(int A) {
+    // prime();
+    // vector<int> ans;
+    // for(int i=2;i<=A/2;i++)
+    // {
+    //     if(p[i]==0&&p[A-i]==0)
+    //     {
+    //         ans.push_back(i);
+    //         ans.push_back(A-i);
+    //         break;
+    //     }
+    // }
+    // return ans;
+    int i,j;
+    vector<int> a;
+    bool f=0;
+    if(A==4)
+    {
+        a.push_back(2);
+        a.push_back(2);
+        return a;
+    }
+    for(i=3;i<=A/2;i=i+2)
+    {
+        f=1;
+        for(j=3;j<=sqrt(i);j++)
+        {
+            if(i%j==0)
+            {
+                f=0;
+                break;
+            }
+        }
+        if(f)
+        {
+            for(j=3;j<=sqrt(A-i);j++)
+            {
+                if((A-i)%j==0)
+                {
+                   f=0;
+                   break;
+                }
+            }
+        }
+        if(f)
+        {
+            a.push_back(i);
+            a.push_back(A-i);
+            return a;
+        }
+    }
+}
