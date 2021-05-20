@@ -1,3 +1,6 @@
+/*
+https://www.interviewbit.com/problems/prime-sum/
+*/
 vector<int> Solution::primesum(int A) {
   /*seive of eratosthenes*/
     vector<bool> primes(A);
