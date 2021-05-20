@@ -1,3 +1,6 @@
+/*
+https://www.interviewbit.com/problems/balanced-parantheses/
+*/
 int Solution::solve(string A) {
     stack<char>st;
     int n=A.size();
