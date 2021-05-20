@@ -1,0 +1,21 @@
+int Solution::solve(vector<int> &A) {
+    int res=1;
+    stack<int> st;
+    int x=INT_MIN;
+    st.push(A[0]);
+    for(int i=1;i<A.size();i++){
+        if(A[i] <= x)
+           return 0;
+        else if(A[i] >x &&( st.empty() || A[i] <=st.top())){
+            st.push(A[i]);
+        }
+        else{
+            while(!st.empty() && A[i]>st.top())
+            {
+                x=st.top();
+                st.pop();
+            }
+        }
+    }
+    return 1;
+}

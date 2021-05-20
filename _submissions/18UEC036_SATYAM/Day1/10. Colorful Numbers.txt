@@ -1,0 +1,39 @@
+vector<char> get(int n){
+    
+    vector<char> a;
+    while(n>0){
+        a.push_back(n%10+'0');
+        n/=10;
+    }
+    
+    return a;
+}
+int Solution::colorful(int A) {
+    unordered_set<int> s;
+    string a=to_string(A);
+    for(int i=0;i<a.size();i++){
+        
+        long long prod=1;
+        for(int j=i;j<a.size();j++){
+                prod*=(a[k]-'0');
+    
+            if(s.find(prod)!=s.end()) return 0;
+            else{
+                s.insert(prod);
+            }
+        }
+    }
+    return 1;
+}
+/*
+BRUTE FORCE
+O(N^3),O(N)
+generate all the possible subarrays store them in  a set and while storing check
+if already exists in the set
+
+OPTIMAL
+O(N^2),O(N)
+optimizing the brute force approach we can simply get rid of the third loop 
+by just simple observation.
+
+*/
