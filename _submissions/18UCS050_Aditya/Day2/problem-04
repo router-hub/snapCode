@@ -1,0 +1,31 @@
+string Solution::longestCommonPrefix(vector<string> &A) {
+    int n=A.size(),j=0,i,min;
+    string s;
+    if(n==0)
+    return s;
+    min=0;
+    for(i=1;i<n;i++)
+    {
+        if(A[i].length()<A[min].length())
+        {
+        min=i;
+        }
+    }
+    int temp=0;
+    for(j=0;j<A[min].length();j++)
+    {
+        for(i=0;i<n;i++)
+        {
+        if(A[i][j]!=A[min][j])
+        {
+        temp=1;
+        break;
+        }
+        }
+        if(temp==1)
+        break;
+        else
+        s.push_back(A[min][j]);
+    }
+    return s;
+}

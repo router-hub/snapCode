@@ -1,0 +1,24 @@
+int Solution::findMedian(vector<vector<int> > &A) {
+    
+    int mn=INT_MAX,mx=INT_MIN;
+    int n=A.size(),m=A[0].size();
+    for(int i=0;i<n;i++){
+        mn=min(mn,A[i][0]);
+        mx=max(mx,A[i][m-1]);
+    }
+    int desired=1+(n*m)/2;
+    
+    while(mn<mx){
+        
+        int mid=mn+(mx-mn)/2;
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            // upper bound will give the first number which is greater than mid
+            cnt+=(upper_bound(A[i].begin(),A[i].end(),mid)-A[i].begin());
+        }
+        if(cnt<desired) mn=mid+1;
+        else  mx=mid;
+       
+    }
+    return mn;
+}

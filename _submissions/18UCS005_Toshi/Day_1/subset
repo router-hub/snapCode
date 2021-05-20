@@ -1,0 +1,22 @@
+public class Solution {
+    public static void findsubset( ArrayList<ArrayList<Integer>> result, ArrayList<Integer> ans, ArrayList<Integer> A,int index)
+    {
+       result.add(new ArrayList<Integer>(ans));
+       for(int i = index ; i < A.size(); i++)
+       {
+        ans.add(A.get(i));
+        findsubset(result,ans,A,i+1);
+        ans.remove(ans.size()-1);
+       }
+        
+    }
+    public ArrayList<ArrayList<Integer>> subsets(ArrayList<Integer> A)
+    {
+         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+         ArrayList<Integer> ans = new ArrayList<>();
+         Collections.sort(A);
+         findsubset(result,ans,A,0);
+        
+         return result;
+    }
+}

@@ -1,0 +1,26 @@
+public class Solution {
+    public int sqrt(int A) 
+    {
+        int ans = 0;
+        int l = 0, r = A;
+        while(l <= r)
+        {
+            long mid = (l+r)/2;
+            long sq = mid * mid;
+            if(A == sq)
+            {
+                return (int)mid;
+            }
+            else if (sq > A)
+            {
+                r = (int) mid - 1;
+            }
+            else
+            {
+                ans = (int) mid;
+                l = (int) mid + 1;
+            }
+        }
+        return ans;
+    }
+}

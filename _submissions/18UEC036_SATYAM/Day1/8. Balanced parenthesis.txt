@@ -1,0 +1,23 @@
+int Solution::solve(string A) {
+    int n=A.size();
+    if(n%2) return 0;
+    
+    stack<char> s;
+    for(char c:A){
+        
+        if(!s.empty()&&s.top()=='('&&c==')') s.pop();
+        else {
+            s.push(c);
+        }
+        
+    }
+    return s.size()==0;
+    // int cnt=0;
+    // for(char c:A){
+    //     if(c=='(') cnt++;
+    //     else cnt--;
+    //     if(cnt<0) return 0;
+    // }
+    
+    // return cnt==0;
+}
