@@ -1,3 +1,6 @@
+/*
+https://www.interviewbit.com/problems/subset/
+*/
 ListNode* Solution::solve(ListNode* A) {
     ListNode* temp=A;
     int zero_count=0,one_count=0;
