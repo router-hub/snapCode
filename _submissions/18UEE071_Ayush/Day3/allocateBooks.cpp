@@ -50,7 +50,13 @@ Solution::Solution(/* args */)
 Solution::~Solution()
 {
 }
-
+int getSum(vector<int> &arr)
+{
+    int sum = 0;
+    for (auto x : arr)
+        sum += x;
+    return sum;
+}
 bool allocationPossible(vector<int> &arr, int b, int k)
 {
     int count = 1;
@@ -75,13 +81,7 @@ bool allocationPossible(vector<int> &arr, int b, int k)
     }
     return 1;
 }
-int getSum(vector<int> &arr)
-{
-    int sum = 0;
-    for (auto x : arr)
-        sum += x;
-    return sum;
-}
+
 int Solution::books(vector<int> &arr, int b)
 {
     int l = arr.size();
