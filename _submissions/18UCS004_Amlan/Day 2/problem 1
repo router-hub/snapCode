@@ -1,0 +1,12 @@
+public class Solution {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public int maxSubArray(final int[] A) {
+        int maxSum = A[0];
+        int currSum = A[0];
+        for(int i = 1; i<A.length; i++){
+            currSum = Math.max(A[i],currSum+A[i]);
+            maxSum = Math.max(maxSum, currSum);
+        }
+        return maxSum;
+    }
+}

@@ -1,0 +1,23 @@
+public class Solution {
+    public int sqrt(int A) {
+        if (A < 2) 
+            return A;
+        if (A < 4) 
+            return 1;
+        int start = 0, end = A / 2;
+        int mid = start + (end - start) / 2;
+        while (start <= end) {
+            mid = start + (end - start) / 2;
+            long square = (long) mid * mid;
+            if (square == A) 
+                return mid;
+            else if 
+                (square < A) start = mid + 1;
+            else 
+                end = mid - 1;
+        }
+        if (mid * mid < A) 
+            return mid;
+        return mid - 1;
+    }
+}

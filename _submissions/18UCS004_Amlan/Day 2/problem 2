@@ -1,0 +1,17 @@
+public class Solution {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public int hammingDistance(final int[] A) {
+        long ans = 0;
+        long n = A.length;
+        long count = 0;
+        for(int i = 0; i < 31; i++){
+            count = 0;
+            for(int j = 0; j < n; j++){
+                if((A[j] & (1 << i)) != 0)
+                    count ++;
+            }
+            ans = (ans + count * (n - count) * 2) % 1000000007;
+        }
+        return (int)ans ;
+    }
+}
