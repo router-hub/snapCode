@@ -1,4 +1,6 @@
-/**/
+/*
+https://www.interviewbit.com/problems/valid-bst-from-preorder/
+*/
 int Solution::solve(vector<int> &A) {
     /*preorder:root -> left-> right*/
     /*BST root->data > root->right->data & root->data < root->left->data*/
