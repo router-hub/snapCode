@@ -1,3 +1,6 @@
+/*
+https://www.interviewbit.com/problems/colorful-number/
+*/
 int Solution::colorful(int A) {
     /*Number into vector*/
    vector<int> nums;
