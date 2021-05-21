@@ -68,7 +68,10 @@ bool allocationPossible(vector<int> &arr, int b, int k)
             if (count > b)
                 return 0;
         }
-        ptr++;
+        else
+        {
+            ptr++;
+        }
     }
     return 1;
 }
@@ -76,7 +79,7 @@ int getSum(vector<int> &arr)
 {
     int sum = 0;
     for (auto x : arr)
-        sum == x;
+        sum += x;
     return sum;
 }
 int Solution::books(vector<int> &arr, int b)
@@ -92,7 +95,7 @@ int Solution::books(vector<int> &arr, int b)
     while (start <= end)
     {
         int mid = start + (end - start) / 2;
-
+        cout<<mid<<endl;
         if (allocationPossible(arr, b, mid))
         {
             ans = mid;
