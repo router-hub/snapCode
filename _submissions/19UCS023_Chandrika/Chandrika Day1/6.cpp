@@ -1,3 +1,6 @@
+/*
+https://www.interviewbit.com/problems/pair-with-given-difference/
+*/
 int Solution::solve(vector<int> &A, int B) {
  sort(A.begin(),A.end());
  unordered_set<int> st;
