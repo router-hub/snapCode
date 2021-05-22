@@ -1,0 +1,17 @@
+void func(TreeNode *root,int k,int &cnt,int &ans){
+    
+    if(!root) return ;
+    
+    func(root->left,k,cnt,ans);
+    cnt++;
+    if(cnt==k) ans=root->val;
+    func(root->right,k,cnt,ans);
+    
+    
+}
+int Solution::kthsmallest(TreeNode* A, int B) {
+    
+   int cnt=0,ans;
+    func(A,B,cnt,ans);
+    return ans;
+}

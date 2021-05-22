@@ -1,0 +1,40 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+ListNode* Solution::partition(ListNode* head, int x) {
+    ListNode *beforeHead=new ListNode(-1);
+       ListNode *afterHead=new ListNode(-1);
+       ListNode *before=beforeHead,*after=afterHead;
+        
+       while(head){
+           
+           if(head->val<x){
+               before->next=head;
+               before=before->next;
+           }
+           else{
+               after->next=head;
+               after=after->next;
+           }
+           
+           head=head->next;
+       } 
+        after->next=nullptr;
+        before->next=afterHead->next;
+        return beforeHead->next;
+    }
+/*
+BRUTEFORCE O(N),O(N)
+create 2 vector one will contain values smaller than x and other will contain value greater
+than or equal to x. Now simply first copy the values from smaller vector to list 
+then from greater vector list.
+
+
+OPTIMAL O(n)
+
+*/

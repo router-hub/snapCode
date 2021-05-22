@@ -1,0 +1,14 @@
+int Solution::bulbs(vector<int> &a) {
+     int cnt=0,i=0,n=a.size();
+    while(i<n and a[i]==1) i++;
+    
+    for(int j=i;j<n;j++){
+        
+        int val=a[j];
+        while(j<n and a[j]==val) j++;
+        cnt++;
+        j--;
+    }
+    
+    return cnt;
+}
