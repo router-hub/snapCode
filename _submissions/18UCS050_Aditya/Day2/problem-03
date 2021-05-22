@@ -1,0 +1,19 @@
+int Solution::sqrt(int A) {
+    int i=0,mid=0,l=1,h=A,ans,ans2;
+    while(l<=h)
+    {
+        mid=(h+l)/2;
+        if(mid*mid==A)
+        return mid;
+        if(mid<=A/mid)
+        {
+            l=mid+1;
+            ans=mid;
+        }
+        else 
+        {
+            h=mid-1;
+        }
+    }
+    return ans;
+}

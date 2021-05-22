@@ -1,0 +1,14 @@
+class Solution:
+    # @param A : list of strings
+    # @return a strings
+    def longestCommonPrefix(self, A):
+        c=""
+        A.sort()
+        a=A[0]
+        b=A[-1]
+        for i in range(len(a)):
+            if a[i]==b[i]:
+                c+=a[i]
+            else:
+                break
+        return c

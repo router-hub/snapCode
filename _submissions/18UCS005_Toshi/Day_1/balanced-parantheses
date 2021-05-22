@@ -1,0 +1,24 @@
+public class Solution {
+    public int solve(String A) {
+        Stack<Character> st = new Stack<>();
+        for(char ch : A.toCharArray())
+        {
+            if(st.isEmpty())
+            {
+                st.push(ch);
+            }
+            else
+            {
+                if(st.peek() == '(' && ch == ')')
+                {
+                    st.pop();
+                }
+                else
+                {
+                    st.push(ch);
+                }
+            }
+        }
+        return (st.isEmpty() ? 1 : 0);
+    }
+}

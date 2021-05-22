@@ -1,0 +1,27 @@
+int Solution::solve(vector<int> &A, int B) {
+    
+    unordered_map<int,int> mp;
+    
+    for(int x:A){
+    mp[x++];
+    if(B==0&&mp[x]>1) return 1;
+    }
+    if(B==0) return 0;
+    for(int x:A){
+        
+        if(mp.find(x+B)!=mp.end()) return 1;
+    }
+    
+    return 0;
+    
+}
+
+/*
+BRUTE FORCE O(N*N)
+run to loops and check every pair
+
+OPTIMAL (N*log(N),O(N)
+store all the elements in a map and then for every element x in an array
+check if B+x is present in the array
+
+*/

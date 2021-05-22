@@ -1,0 +1,27 @@
+    public class Solution {
+    public int solve(ArrayList<Integer> A, int B) {
+    Integer[] arr = new Integer[A.size()];
+        arr = A.toArray(arr);
+        if(arr.length == 0)
+          return 0;
+        int i = 0 , j = 0;
+        Arrays.sort(arr);
+        while( i < A.size() && j < A.size())
+        {
+            int k = arr[j] - arr[i];
+            if(k == B && i != j)
+            {
+                return 1;
+            }
+            else if (k > B)
+            {
+                i++;
+            }
+            else
+            {
+                j++;
+            }
+        }
+        return 0;
+    }
+}

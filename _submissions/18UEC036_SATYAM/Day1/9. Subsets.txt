@@ -1,0 +1,39 @@
+// vector<vector<int>> ans;
+// void func(int idx,int n,vector<int> curr,vector<int> &A){
+    
+//     ans.push_back(curr);
+//     if(idx==n){
+//         return ;
+//     }
+//     for(int i=idx;i<n;i++){
+//         curr.push_back(A[i]);
+//         func(i+1,n,curr,A);
+//         curr.pop_back();
+//     }
+    
+    
+// }
+vector<vector<int> > Solution::subsets(vector<int> &A) {
+    
+    // ans.resize(A.size());
+    // ans.clear();
+    // for(int i=0;i<A.size();i++) ans[i].clear();
+    // sort(A.begin(),A.end());
+    // func(0,A.size(),vector<int>(),A);
+    // return ans;
+    
+    vector<vector<int>> ans;
+    sort(A.begin(),A.end());
+    int n=A.size();
+    // int mask=0;
+    
+    for(int mask=0;mask<(1<<n);mask++){
+        
+        vector<int> curr;
+        for(int i=0;i<n;i++){
+            if((mask>>i)&1) curr.push_back(A[i]);
+        }
+        ans.push_back(curr);
+    }
+    return ans;
+}
