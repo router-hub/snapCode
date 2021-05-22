@@ -1,0 +1,10 @@
+int Solution::isPalindrome(string A) {
+    string s;
+    for(int i=0;i<A.size();i++){
+        if((A[i]>=65 && A[i]<=90)||(A[i]>=97 && A[i]<=122)||(A[i]>='0' && A[i]<='9')) s.push_back(tolower(A[i]));
+    }
+    for(int i=0;i<s.size()/2;i++){
+        if(s[i]!=s[s.size()-i-1]) return false;
+    }
+    return true;
+}
