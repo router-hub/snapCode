@@ -94,10 +94,5 @@ vector<vector<int>> Solution::combinationSum(vector<int> &A, int B)
 int main()
 {
     fast_cin();
-
-    Solution s;
-    vector<int> arr{5, 17, 100, 11};
-    int b = 4;
-    cout << s.books(arr, b) << endl;
     return 0;
 }
