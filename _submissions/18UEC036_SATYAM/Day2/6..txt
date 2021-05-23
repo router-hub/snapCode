@@ -1,0 +1,22 @@
+int Solution::threeSumClosest(vector<int> &A, int B) {
+    
+    sort(A.begin(),A.end());
+    int sum=A[0]+A[1]+A[2];
+    int n=A.size();
+    for(int i=0;i<n;i++){
+        
+        int x=A[i],low=i+1,high=n-1;
+        while(low<high){
+            
+            int currSum=x+A[low]+A[high];
+            if(abs(B-currSum)<abs(B-sum)) sum=currSum;
+            
+            if(currSum==B) return B;
+            else if(currSum<B) low++;
+            else if(currSum>B) high--;
+            
+        }
+        
+    }
+    return sum;
+}
