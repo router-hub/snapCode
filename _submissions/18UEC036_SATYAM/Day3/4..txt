@@ -1,0 +1,29 @@
+string Solution::countAndSay(int n) {
+   
+   string ans="1";
+   
+   if(n==1) return ans;
+   
+   
+   for(int i=2;i<=n;i++){
+       
+       string temp="";
+       int j=0;
+       while(j<ans.size()){
+           
+           char c=ans[j];
+           int cnt=0;
+           while(j<ans.size() and ans[j]==c){
+            cnt++;
+            j++;
+           }
+           
+           temp=temp+to_string(cnt)+c;
+           
+       }
+       ans=temp;
+       
+   }
+   return ans;
+    
+}
