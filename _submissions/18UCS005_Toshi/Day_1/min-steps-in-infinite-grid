@@ -1,0 +1,17 @@
+public class Solution {
+    public int coverPoints(ArrayList<Integer> A, ArrayList<Integer> B) 
+    {
+        int currX = A.get(0);
+        int currY = B.get(0);
+        int count = 0;
+        for(int i = 1; i < A.size(); i++)
+        {
+            int destX = A.get(i);
+            int destY = B.get(i);
+            count += Math.max(Math.abs(destX - currX),Math.abs(destY - currY));
+            currX = destX;
+            currY = destY;
+        }
+        return count;
+    }
+}

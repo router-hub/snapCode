@@ -1,0 +1,16 @@
+class Solution:
+    # @param A : list of integers
+    # @return a list of integers
+    def plusOne(self, A):
+        j=0
+        B=[]
+        for k in range(len(A)):
+            B.append(A[k])
+        strings = [str(integer) for integer in B]
+        a_string = "".join(strings)
+        an_integer = int(a_string)+1
+        if an_integer==1:
+            return [1]
+        else:
+            res = [int(x) for x in str(an_integer)]
+            return res

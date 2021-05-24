@@ -1,0 +1,17 @@
+vector<int> Solution::twoSum(const vector<int> &a, int target) {
+    
+    map<int,int> mp;
+    int n=a.size();
+    for(int i=0;i<n;i++){
+        int required=target-a[i];
+        if(mp.find(required)!=mp.end()){
+            int i1=mp[required],j1=i+1;
+            return vector<int>({i1,j1});
+        }
+        
+        if(mp.find(a[i])==mp.end()) mp[a[i]]=i+1;
+    }
+    
+    return vector<int>();
+    
+}

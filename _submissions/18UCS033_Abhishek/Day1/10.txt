@@ -1,0 +1,22 @@
+int Solution::colorful(int A) {
+    vector<int> v;
+    while(A)
+    {
+        v.push_back(A%10);
+        A/=10;
+    }
+    unordered_set<int> s;
+    for(int i=v.size()-1;i>=0;i--)
+    {
+        int mul=1;
+        for(int j=i;j>=0;j--)
+        {
+            mul=mul*v[j];
+            if(s.find(mul)!=s.end())
+            return 0;
+            else
+            s.insert(mul);
+        }
+    }
+    return 1;
+}

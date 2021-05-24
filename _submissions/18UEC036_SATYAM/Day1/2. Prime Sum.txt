@@ -1,0 +1,35 @@
+vector<bool> isPrime;
+
+void sieve(int n){
+    
+    isPrime.resize(n+1,true);
+    isPrime[0]=isPrime[1]=false;
+    for(int i=2;i*i<=n;i++){
+        
+        if(isPrime[i]){
+            
+            for(int j=i*i;j<=n;j+=i){
+                isPrime[j]=false;
+            }
+            
+        }
+        
+    }
+
+    
+    
+}
+vector<int> Solution::primesum(int A) {
+    sieve(A);
+    int n=A;
+    vector<int> ans;
+    
+    for(int i=2;i<=n/2;i++){
+        if(isPrime[i]&&isPrime[n-i]){
+            ans.push_back(i);
+            ans.push_back(A-i);
+            return ans;
+        }
+    }
+    return ans;
+}

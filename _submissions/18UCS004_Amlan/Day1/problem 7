@@ -1,0 +1,26 @@
+public class Solution {
+    public ListNode solve(ListNode A) {
+        if(A == null || A.next == null)
+            return A;
+        ListNode pointer = A;
+        int count = 0;
+        int len = 0;
+        while(pointer != null){
+            len++;
+            if(pointer.val == 1)
+                count++;
+            pointer = pointer.next;
+        }
+        ListNode temp = A;
+        int ctr = 0;
+        while(temp != null){
+            ctr++;
+            if(ctr <= len - count)
+                temp.val = 0;
+            else
+                temp.val = 1;
+            temp = temp.next;
+        }
+        return A;
+    }
+}
