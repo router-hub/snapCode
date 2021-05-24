@@ -11,7 +11,8 @@ class Solution
     
       for {
         i <- 0 until n
-      } {
+      } 
+      {
         for {
           j <- i + 1 until n
           sum = sortedArr(i) + sortedArr(j)
