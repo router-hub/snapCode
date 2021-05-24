@@ -1,0 +1,46 @@
+int dx[]={-1,-1,0,1,1,1,0,-1};
+int dy[]={0,1,1,1,0,-1,-1,-1};
+bool isvalid(int x,int y,int n,int m)
+{
+    if(x<0||x>=n||y<0||y>=m) return false;
+    return true;
+}
+void dfs(int x,int y,vector<vector<int> > &A,vector<vector<bool> > &visited,int n,int m,int &len)
+{
+    visited[x][y]=true;
+    for(int i=0;i<8;i++)
+    {
+        if(isvalid(x+dx[i],y+dy[i],n,m)&&visited[x+dx[i]][y+dy[i]]==false)
+        {
+            if(A[x+dx[i]][y+dy[i]]==1)
+            {len++;
+            dfs(x+dx[i],y+dy[i],A,visited,n,m,len);
+            }
+            
+            
+        }
+    }
+    
+    
+}
+int Solution::solve(vector<vector<int> > &A) {
+    
+    int n=A.size();
+    int m=A[0].size();
+    vector<vector<bool>> visited(n,vector<bool> (m,false));
+    int ans=0;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            if(A[i][j]==1&&visited[i][j]==false)
+            {
+                int len=1;
+                dfs(i,j,A,visited,n,m,len);
+                ans=max(ans,len);
+            }
+        }
+    }
+    return ans;
+    
+}
