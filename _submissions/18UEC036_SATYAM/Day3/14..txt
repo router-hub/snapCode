@@ -1,0 +1,16 @@
+int Solution::solve(vector<vector<int> > &a) {
+ 
+    sort(a.begin(),a.end());
+    priority_queue<int,vector<int>,greater<int>> q;
+    q.push(a[0][1]);
+    int n=a.size();
+    for(int i=1;i<n;i++){
+        
+        if(q.top()<=a[i][0]){
+            q.pop();
+        }
+            q.push(a[i][1]);
+        
+    }
+    return q.size();
+}
