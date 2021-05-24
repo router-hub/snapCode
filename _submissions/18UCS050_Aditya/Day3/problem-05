@@ -1,0 +1,36 @@
+int Solution::divide(int A, int B) {
+  long long  int i=0,temp=0,temp1=0;
+  if(A==INT_MIN && B==1)
+  return INT_MIN;
+  if(A==INT_MIN && B==-1)
+  return INT_MAX;
+  if(A==INT_MAX && B==1)
+  return INT_MAX;
+  if(A==INT_MAX && B==-1)
+  return INT_MIN;
+  if(A<0)
+  {
+      A=-A;
+      temp=1;
+  }
+  if(B<0)
+  {
+      temp1=1;
+      B=-B;
+  }
+    if(B==0)
+    return INT_MAX;
+    while(A>=B)
+    {
+        A=A-B;
+        i++;
+    }
+    if(temp==1&& temp1==0)
+    return -i;
+    else if(temp==0&& temp1==1)
+    return -i;
+    else if(temp==1 && temp1==1)
+    return i;
+    else return i;
+  return i;  
+}
