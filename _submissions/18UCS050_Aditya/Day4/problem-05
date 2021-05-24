@@ -1,0 +1,15 @@
+int Solution::cntBits(vector<int> &A) {
+    long long int c=0,a,b,ans=0;
+    for(int i=0;i<32;i++)
+    { a=0;b=0;
+        for(int j=0;j<A.size();j++)
+        {
+            if((A[j]>>i)&1)
+            a++;
+            else
+            b++;
+        }
+        ans=(ans%1000000007+(2*a*b)%1000000007)%1000000007;
+    }
+    return ans%1000000007;
+}
