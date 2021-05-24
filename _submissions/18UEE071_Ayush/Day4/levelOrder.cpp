@@ -44,14 +44,13 @@ struct TreeNode
 class Solution
 {
 private:
-    /* data */
 public:
-    Solution(/* args */);
+    Solution();
     ~Solution();
     vector<vector<int>> levelOrder(TreeNode *root);
 };
 
-Solution::Solution(/* args */)
+Solution::Solution()
 {
 }
 
@@ -122,4 +121,11 @@ vector<vector<int>> Solution::levelOrder(TreeNode *root)
     }
 
     return mothership;
+}
+
+int main()
+{
+    fast_cin();
+
+    return 0;
 }
