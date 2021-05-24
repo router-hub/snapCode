@@ -1,0 +1,72 @@
+class Solution
+{
+     public ListNode mergeTwoLists(ListNode l1, ListNode l2)
+    {
+       if(l1 == null && l2 == null)
+           return null;
+        if(l1 == null)
+            return  l2;
+        else if(l2 == null)
+            return l1;
+        ListNode temp1 = l1, temp2 = l2;
+        ListNode curr = new ListNode(0);
+        ListNode newhead = curr;
+        while(temp1 != null && temp2 != null)
+        {
+            if(temp1.val <= temp2.val)
+            {
+                newhead.next = temp1;
+                newhead = temp1;
+                temp1 = temp1.next;
+            }else
+            {
+               newhead.next = temp2;
+                newhead = temp2;
+                temp2 = temp2.next; 
+            }
+        }
+        if(temp1 == null)
+        {
+            newhead.next = temp2;
+        }else
+        {
+           newhead.next = temp1; 
+        }
+        return curr.next;
+    }
+    public ListNode getNode(ListNode head , ListNode tail) 
+    {
+        ListNode fast = head;
+        ListNode slow = head;
+        while(fast != tail && fast.next != tail)
+        {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+    public ListNode helper(ListNode head, ListNode tail)
+    {
+       if(head == tail)
+       {
+          ListNode newnode = new ListNode(head.val);
+           return newnode;
+       }
+       ListNode  mid = getNode(head,tail); 
+       ListNode fsh = helper(head , mid);
+       ListNode ssh = helper(mid.next , tail);
+       ListNode cl = mergeTwoLists(fsh,ssh);
+       return cl;
+    }
+    public ListNode sortList(ListNode head)
+    {
+        if(head == null)
+            return head;
+         ListNode temp = head;
+        while(temp.next != null)
+        {
+            temp = temp.next;
+        }
+         return helper(head,temp);
+    }
+}
