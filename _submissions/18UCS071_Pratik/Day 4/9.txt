@@ -1,0 +1,11 @@
+from itertools import combinations
+class Solution:
+    # @param A : integer
+    # @param B : integer
+    # @return a list of list of integers
+    def combine(self, A, B):
+        D=[]
+        C=list(combinations(range(1,A+1),B))
+        for i in C:
+            D.append(list(i))
+        return D
