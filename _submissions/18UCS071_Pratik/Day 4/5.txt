@@ -1,0 +1,15 @@
+from itertools import combinations
+class Solution:
+    # @param A : list of integers
+    # @return an integer
+    def nTriang(self, A):
+        A.sort()
+        C=[]
+        count=0
+        B=list(combinations(A,3))
+        for i in B:
+            C.append(list(i))
+        for i in C:
+            if sum(i[:2])>i[2]:
+                count+=1
+        return(count%((10**9)+7))
