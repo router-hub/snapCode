@@ -1,0 +1,38 @@
+public class Solution 
+{
+    public int colorful(int A)
+    {
+String temp = Integer.toString(A);
+int[] num = new int[temp.length()];
+for (int i = 0; i < temp.length(); i++) {
+    num[i] = temp.charAt(i) - '0';
+}
+        Set<Integer> set = new HashSet<>();
+        int product = 0;
+        for(int i = 0; i < num.length; i++)
+        {
+                product = num[i];
+               if(set.contains(product))
+               {
+                   return 0;
+               }
+               else
+               {
+                   set.add(product);
+               }
+            for(int j = i+1; j < num.length; j++)
+            {
+                product = product * num[j];
+               if(set.contains(product))
+               {
+                   return 0;
+               }
+               else
+               {
+                   set.add(product);
+               }
+            }
+        }
+        return 1;
+    }
+}

@@ -1,0 +1,18 @@
+class Solution:
+    # @param A : integer
+    # @return a strings
+    def countAndSay(self, A):
+        def next_num(s):
+            result, i, size = [], 0, len(s)-1
+            while i<=size:
+                count = 1
+                while(i+1<=size and s[i]==s[i+1]):
+                    i += 1
+                    count += 1
+                result.append(str(count)+s[i])
+                i+=1
+            return ''.join(result)
+        s = '1'
+        for i in range(1,A):
+            s = next_num(s)
+        return s

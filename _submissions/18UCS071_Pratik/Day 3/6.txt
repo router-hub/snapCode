@@ -1,0 +1,18 @@
+from itertools import combinations
+class Solution:
+    # @param A : list of integers
+    # @return a list of list of integers
+    def threeSum(self, A):
+        r=list(combinations(A,3))
+        t=[]
+        for i in range(len(r)):
+            if sum(r[i])==0:
+                t.append(r[i])
+        for i in range(len(t)):
+            t[i]=list(t[i])
+        for i in t:
+            i.sort()
+        for i in t:
+            if t.count(i)>1:
+                t.remove(i)
+        return t

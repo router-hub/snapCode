@@ -1,0 +1,54 @@
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     ListNode(int x) { val = x; next = null; }
+ * }
+ */
+public class Solution {
+    public ListNode partition(ListNode A, int B) 
+    {
+        ListNode smaller = null , greater = null, smallerhead = null , greaterhead = null;
+        if(A== null || A.next == null)
+        {
+            return A;
+        }
+        ListNode curr = A;
+        while(curr != null)
+        {
+         if(curr.val < B)
+         {
+             if(smallerhead == null)
+             {
+                 smallerhead = smaller = curr;
+             }
+             else
+             {
+                 smaller.next = curr;
+                 smaller = curr;
+             }
+         }
+         else
+         {
+             if(greaterhead == null)
+             {
+                 greater = greaterhead = curr;
+             }
+             else
+             {
+                 greater.next = curr;
+                 greater = curr;
+             }
+             
+         }
+         curr = curr.next;
+        }
+        if(smallerhead == null)
+           return greaterhead;
+        smaller.next  = greaterhead;
+        if( greater != null)
+           greater.next = null;
+        return smallerhead;
+    }
+}

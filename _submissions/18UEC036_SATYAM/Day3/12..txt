@@ -1,0 +1,62 @@
+void inorder(TreeNode *root,vector<int> &a){
+    if(!root) return ;
+    
+    inorder(root->left,a);
+    a.push_back(root->val);
+    inorder(root->right,a);
+} 
+int Solution::t2Sum(TreeNode* A, int B) {
+/*    
+    vector<int> a;
+    inorder(A,a);
+    int i=0,j=a.size()-1;
+    while(i<j){
+        if(a[i]+a[j]==B){
+            return 1;
+        }else if(a[i]+a[j]<B) i++;
+        else j--;
+    }
+    return 0;
+*/
+
+    stack<TreeNode*> left,right;
+    TreeNode *l=A,*r=A;
+    while(l){
+        left.push(l);
+        l=l->left;
+    }
+    while(r){
+        right.push(r);
+        r=r->right;
+    }
+    
+    while(left.top()->val<right.top()->val){
+        
+        l=left.top(),r=right.top();
+        
+        int val=l->val+r->val;
+        if(val==B) return 1;
+        else if(val<B){
+            
+            l=l->right;
+            left.pop();
+            while(l){
+                 left.push(l);
+                 l=l->left;
+            }
+        
+        }
+        else{
+            
+            r=r->left;
+            right.pop();
+            while(r) {
+                 right.push(r);
+                 r=r->right;
+            }
+        }
+        
+    }
+    return 0;
+
+}

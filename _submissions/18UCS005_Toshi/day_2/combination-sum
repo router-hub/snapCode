@@ -1,0 +1,31 @@
+public class Solution {
+    public static void  solution(ArrayList<Integer> A,int B,int index,ArrayList<ArrayList<Integer>> ans, ArrayList<Integer> list)
+    {
+        if(B < 0 || index >= A.size())
+        {
+            return;
+        }
+        else if(B == 0)
+        {
+            if(!ans.contains(list))
+            {
+            ans.add(new ArrayList<>(list));
+            }
+            return;
+        }
+        for(int i = index; i < A.size(); i++)
+        {
+            list.add(A.get(i));
+            solution(A,B - A.get(i),i,ans,list);
+            list.remove(list.size() - 1);
+        }
+        return;
+    }
+    public ArrayList<ArrayList<Integer>> combinationSum(ArrayList<Integer> A, int B) 
+    {
+          ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+        Collections.sort(A);
+        solution(A,B,0,ans,new ArrayList<>());
+     return ans;
+    }
+}

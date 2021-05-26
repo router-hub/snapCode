@@ -1,0 +1,48 @@
+public class Solution {
+    public int isPalindrome(String A) 
+    {
+        int i = 0 , j = A.length() - 1;
+        A = A.toLowerCase();
+        while(i < j)
+        {
+            if(Character.isLetter(A.charAt(i)) && Character.isLetter(A.charAt(j)))
+            {
+             if(A.charAt(i) == A.charAt(j))
+             {
+                 i++;
+                 j--;
+             }
+             else
+            {
+               return 0; 
+            }
+            }
+            else if(Character.isDigit(A.charAt(i)) && Character.isDigit(A.charAt(j)))
+            {
+             if(A.charAt(i) == A.charAt(j))
+             {
+                 i++;
+                 j--;
+             }
+             else
+             {
+                 return 0;
+             }
+            }
+            else if (!Character.isLetter(A.charAt(i)) && !Character.isDigit(A.charAt(i)))
+            {
+                i++;
+            }
+            else if (!Character.isLetter(A.charAt(j)) && !Character.isDigit(A.charAt(i)))
+            {
+                j--;
+            }
+            else
+            {
+                return 0;
+            }
+         
+        }
+        return 1;
+    }
+}

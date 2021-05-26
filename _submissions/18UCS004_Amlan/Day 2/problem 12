@@ -1,0 +1,16 @@
+public class Solution {
+    public int kthsmallest(TreeNode A, int B){
+        ArrayList<Integer> a = new ArrayList<>();
+        if(A == null)
+            return A.val;
+        inorder(A, a);
+        return a.get(B - 1);
+    }
+    public void inorder(TreeNode A, ArrayList a){
+        if(A == null)
+            return;
+        inorder(A.left, a);
+        a.add(A.val);
+        inorder(A.right, a);
+    }
+}

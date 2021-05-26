@@ -1,0 +1,33 @@
+
+int Solution::divide(int a, int b) {
+    
+    long long n = a, m = b;
+   int sign = n < 0 ^ m < 0 ? -1 :1;
+   long long q = 0;
+   n = abs(n);
+   m = abs(m);
+   long long t = 0;
+   for (int i = 31; i >= 0; i--)
+        if (t + (m << i) <= n){
+            t += m << i;
+            q += 1LL << i;
+        }
+
+    // assign back the sign
+         q = sign*q;
+
+    // check for overflow and return
+    return q >= INT_MAX || q < INT_MIN ? INT_MAX : q;
+}
+/*
+BRUTE FORCE O(DIVIDEND)
+try subtracting divisor from dividend till time dividend become less than divisor and 
+count how many you subtracted the divisor.
+
+OPTIMAL O(LOG(DIVIDEND)
+Instead of subtracting divisor from dividend one by one we can find the highest factor
+by which we can multiply the divisor and then subtract from divisor .
+
+and as every number(factor) can be represented as a power of 2 we can use bit manipulation.
+
+*/
