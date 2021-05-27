@@ -1,0 +1,56 @@
+vector<int> A;
+vector<int> B;
+int top1,top2,mn;
+MinStack::MinStack() {
+    top1=-1;
+    top2=-1;
+    A.clear();
+    B.clear();
+}
+
+void MinStack::push(int x) {
+    A.push_back(x);
+    top1++;
+    if(top2==-1)
+    {
+      B.push_back(x);
+      top2++;
+    }
+    else if(B[top2]>x)
+        {
+           B.push_back(x);
+           top2++;
+        }
+}
+
+void MinStack::pop() {
+    if(top1>=0)
+        if(A[top1]==B[top2])
+        {
+            A.pop_back();
+            B.pop_back();
+            top1--;
+            top2--;
+        }
+    else
+    {
+        top1--;
+        A.pop_back();
+    }
+}
+
+int MinStack::top() {
+    if(top1==-1)
+    return -1;
+    else
+    return A[top1];
+}
+
+int MinStack::getMin() {
+    if(top2!=-1)
+    mn=B[top2];
+    else
+    mn=-1;
+    return mn;
+}
+

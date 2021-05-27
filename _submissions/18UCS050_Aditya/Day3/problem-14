@@ -1,0 +1,29 @@
+int Solution::solve(vector<vector<int> > &A) {
+    int n = A.size();
+    vector<int>a(n,0);
+    vector<int>b(n,0);
+    for(int i=0; i<n; i++){
+        a[i] = A[i][0];
+        b[i] = A[i][1];
+    }
+    sort(a.begin(),a.end());
+    sort(b.begin(),b.end());
+    int s = 0;
+    int i = 0 , j=0;
+    int ans = INT_MIN;
+    while(i<n && j<n)
+    {
+        if(a[i]<b[j])
+        {
+            s++;
+            i++;
+        }
+        else
+        {
+            j++;
+            s--;
+        }
+        ans = max(ans,s);
+    }
+    return ans;
+}

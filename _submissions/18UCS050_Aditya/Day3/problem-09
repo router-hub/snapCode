@@ -1,0 +1,29 @@
+int b;
+void fun(vector<int> &A,vector<vector<int>> &ans,vector<int>v,int i,int s)
+{
+    if(s==b)
+    {
+        ans.push_back(v);
+        return;
+    }
+    if(s>b || i==A.size())
+        return;
+    fun(A,ans,v,i+1,s);
+    v.push_back(A[i]);
+    fun(A,ans,v,i+1,s+A[i]);
+}
+vector<vector<int> > Solution::combinationSum(vector<int> &A, int B) {
+    vector<vector<int>> ans,res;
+    vector<int>v;
+    b=B;
+    sort(A.begin(),A.end());
+    fun(A,ans,v,0,0);
+    sort(ans.begin(),ans.end());
+    
+    for(int i=0;i<ans.size();i++)
+    {
+        if(i==0 || ans[i]!=ans[i-1])
+            res.push_back(ans[i]);
+    }
+    return res;
+}

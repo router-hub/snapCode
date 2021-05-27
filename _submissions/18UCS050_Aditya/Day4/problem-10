@@ -1,0 +1,32 @@
+vector<vector<int> > Solution::fourSum(vector<int> &A, int B) {
+    int n=A.size();
+    if(n<4)
+        return {};
+    vector<vector<int>> v;
+    long long sum=0;
+    sort(A.begin(),A.end());
+    for(int u=0;u<n-3;u++)
+    {
+        for(int i=u+1;i<n-2;i++)
+        {
+            int start=i+1,end=n-1;
+            while(start<end)
+            {
+                sum=(long long )(A[u]+A[i])+(A[start])+(A[end]);
+                if(sum==B)
+                {
+                    v.push_back({A[u],A[i],A[start],A[end]});
+                    start++;
+                    end--;
+                }
+                else if(sum>B)
+                    end--;
+                else
+                    start++;
+            }
+        }
+    }
+    sort(v.begin(),v.end());
+    v.erase(unique(v.begin(),v.end()),v.end());
+    return v;
+}

@@ -1,0 +1,28 @@
+string Solution::countAndSay(int A) {
+string temp="";
+int c=0,i,j,n;
+if(A==1)
+return "1";
+A=A-2;
+string s="11";
+for(i=0;i<A;i++)
+{
+    for(j=0;j<s.length();j++)
+    {
+        if(s[j]==s[j+1])
+        c++;
+        else if(s[j]!=s[j+1])
+        {
+            string s1;
+           
+            c++;
+            temp.push_back(c+'0');
+             temp.push_back(s[j]);
+            c=0;
+        }
+    }
+    s=temp;
+    temp.clear();
+}
+return s;
+}

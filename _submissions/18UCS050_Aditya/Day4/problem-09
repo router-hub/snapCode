@@ -1,0 +1,23 @@
+void fun(int a,int b,vector<vector<int>> &ans,vector<int> &v,int i)
+{
+    if(v.size()==b)
+    {
+        ans.push_back(v);
+        return;
+    }
+    if(i==a+1)
+        return;
+    for(int j=i;j<=a;j++)
+    {
+        v.push_back(j);
+        fun(a,b,ans,v,j+1);
+        v.pop_back();
+    }
+    
+}
+vector<vector<int> > Solution::combine(int A, int B) {
+    vector<vector<int>> ans;
+    vector<int> v;
+    fun(A,B,ans,v,1);
+    return ans;
+}
