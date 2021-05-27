@@ -28,6 +28,8 @@ class Solution:
 
         while(ptr3>=0):
             currentX = indicesOccupied[ptr3]
+            if(ptr1<0):
+                break
             while(ptr1 in hashset and ptr1>currentX):
                 ptr1-=1
             count+=(abs(currentX-ptr1))
@@ -37,6 +39,8 @@ class Solution:
         
         while(ptr4<len(indicesOccupied)):
             currentX = indicesOccupied[ptr4]
+            if(ptr2 >= l):
+                break
             while(ptr2 in hashset and ptr2<currentX):
                 ptr2+=1
             count+=(abs(currentX-ptr2))
