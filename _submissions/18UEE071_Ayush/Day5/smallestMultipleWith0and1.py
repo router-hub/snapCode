@@ -33,5 +33,4 @@ class Solution:
         
 
 ob = Solution()
-
 print(ob.multiple(4556))
