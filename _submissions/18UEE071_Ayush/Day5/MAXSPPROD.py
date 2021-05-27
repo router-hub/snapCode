@@ -5,7 +5,6 @@ class Solution:
         s=[]
         ans = 0
         for i in range(len(arr)):
-
             while(len(s)>0 and arr[s[-1]] <= arr[i]):
                 s.pop()
                 if(len(s) > 0):
