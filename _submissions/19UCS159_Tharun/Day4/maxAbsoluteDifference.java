@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class maxAbsoluteDifference {
   public int maxArr(ArrayList<Integer> A) {
     int min1 = Integer.MAX_VALUE;
