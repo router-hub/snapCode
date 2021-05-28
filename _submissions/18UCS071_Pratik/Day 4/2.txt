@@ -1,0 +1,12 @@
+class Solution:
+    # @param A : integer
+    # @param B : integer
+    # @param C : integer
+    # @param D : integer
+    # @return an integer
+    def solve(self, A, B, C, D):
+        E=[A,B,C,D]
+        if 2 * sum(list(set(E)))==sum(E):
+            return 1
+        else:
+            return 0

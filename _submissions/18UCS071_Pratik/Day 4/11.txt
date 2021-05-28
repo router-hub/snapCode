@@ -1,0 +1,13 @@
+class Solution:
+    # @param A : integer
+    # @param B : list of integers
+    # @return an integer
+    def nchoc(self, A, B):
+        count=0
+        c=0
+        for i in range(A):
+            c=max(B)
+            count+=c
+            i=B.index(c)
+            B[i]=B[i]//2
+        return count%((10**9)+7)
