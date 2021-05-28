@@ -1,0 +1,12 @@
+int Solution::findMedian(vector<vector<int> > &A) {
+    int n=A[0].size();
+    int m=A.size();
+    for(int i=1;i<m;i++){
+        for(int j=0;j<n;j++){
+            A[0].push_back(A[i][j]);
+        }
+    }
+    sort(A[0].begin(),A[0].end());
+    int k=A[0].size()/2;
+    return A[0][k];
+}
