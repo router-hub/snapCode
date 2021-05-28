@@ -1,0 +1,18 @@
+class Solution:
+    # @param A : tuple of integers
+    # @param B : integer
+    # @return an integer
+    def diffPossible(self, A, B):
+        if len(A)==1:
+            return 0
+        elif B==0:
+            if len(A)!=len(set(A)):
+                return 1
+            else:
+                return 0
+        else:
+            for i in range(len(A)-1):
+                if A[i]+B in A:
+                    return 1
+                else:
+                    return 0
