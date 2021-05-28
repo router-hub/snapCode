@@ -1,0 +1,34 @@
+public class Solution {
+int count;
+
+public void floodFill(ArrayList<ArrayList<Integer>> A,int i, int j){
+    if(i<0|| j<0||j>=A.get(0).size() || i>=A.size() || A.get(i).get(j) == 0)
+     return;
+    A.get(i).set(j,0);
+    count++;
+    floodFill(A,i+1,j+1 );
+    floodFill(A,i+1,j-1 );
+    floodFill(A,i+1,j );
+    floodFill(A,i,j+1 );
+    floodFill(A,i,j-1 );
+    floodFill(A,i-1,j-1 );
+    floodFill(A,i-1,j+1 );
+    floodFill(A,i-1,j );
+}
+public int solve(ArrayList<ArrayList<Integer>> A) {
+    if(A.size()==0) return 0;
+    int max=0;
+    for(int i=0; i<A.size();i++){
+        for(int j=0; j<A.get(0).size(); j++){
+            if(A.get(i).get(j) ==1){
+                count = 0;
+                floodFill(A,i,j);
+                if(max<count)
+                  max =count;
+            }
+        }
+    }
+    
+    return max;
+}
+}

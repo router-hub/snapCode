@@ -1,0 +1,29 @@
+public class Solution {
+    public String countAndSay(int A) 
+    {
+    String s = "1";
+    int n = A;
+      if(n == 1)
+      {
+          return s;
+      }
+      for(int i = 1; i < n; i++)
+      {
+          s = helper(s);
+      }
+        return s;
+    }
+    private String helper(String num) {
+        StringBuilder n = new StringBuilder();
+        int i = 0, j = 0;
+        while (i < num.length()) { 
+            while (j < num.length() && num.charAt(j) == num.charAt(i)) {
+                j++;
+            }
+            int freq = j-i; 
+            n.append(freq).append(num.charAt(i));
+            i = j;
+        }
+        return n.toString();
+    }
+}
