@@ -1,0 +1,13 @@
+int Solution::findMedian(vector<vector<int> > &matrix) {
+    vector<int>v;
+       for(int i=0;i<matrix.size();i++){
+           for(int j=0;j<matrix[0].size();j++){
+               v.push_back(matrix[i][j]);
+           }
+       } 
+        sort(v.begin(),v.end());
+        if(v.size()%2==0){
+            return (v[v.size()/2-1]+v[v.size()/2])/2;
+        }
+        return v[v.size()/2];
+}
