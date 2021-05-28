@@ -1,0 +1,40 @@
+#define pi pair<int,pair<int,int>>
+vector<int> Solution::solve(vector<int> &a, vector<int> &b) {
+    
+    sort(a.begin(),a.end());
+    sort(b.begin(),b.end());
+    
+    priority_queue<pi> pq;
+    set<pair<int,int>> s;
+    int n=a.size();
+    pq.push({a[n-1]+b[n-1],{n-1,n-1}});
+    s.insert({n-1,n-1});
+    vector<int> ans;
+    while(ans.size()!=n){
+        pi p=pq.top();
+        pq.pop();
+        int val=p.first,i=p.second.first,j=p.second.second;
+        
+        ans.push_back(val);
+        
+        if(i>0 and s.count({i-1,j})==0){
+            pq.push({a[i-1]+b[j],{i-1,j}});
+            s.insert({i-1,j});
+        }
+        if(j>0 and s.count({i,j-1})==0){
+            pq.push({a[i]+b[j-1],{i,j-1}});
+            s.insert({i,j-1});
+        }
+    }
+    return ans;
+}
+/*
+BRUTE FORCE
+O(N^2),O(N)
+find out all possible pair and push them into a minheap and while pushing if size of
+head becomes greater than n pop the minimum element from the minheap;
+
+O(Nlog(N)),O(N)
+
+
+*/

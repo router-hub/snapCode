@@ -4,7 +4,7 @@ module.exports = {
     subsets : function(A){
         
         
-         var result = [];
+        var result = [];
 	    A.sort(function(a,b) {return a-b;});
 	    
         var recurse = function(currentIndex, soFar) {

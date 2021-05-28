@@ -1,0 +1,25 @@
+int mod=1000000007;
+int Solution::hammingDistance(const vector<int> &A) {
+    int distance=0,n= A.size();
+    for(int i=0;i<32;i++){
+        
+        int one=0,zero=0;
+        for(int x:A){
+            if(x&(1<<i)) one++;
+            else zero++;
+        }
+        
+        distance=distance+(2LL*one*zero)%mod;
+        distance=distance%mod;
+    }
+    return distance;
+}
+/*
+BRUTE FORCE
+O(N*N*LOG(N))
+try every possible pair and for every pair calculate how many bits are different.
+
+OPTIMAL 
+O(N*LOG(N)
+
+*/

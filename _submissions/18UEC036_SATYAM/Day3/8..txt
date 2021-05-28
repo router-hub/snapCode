@@ -1,0 +1,20 @@
+int Solution::braces(string A) {
+    stack<char> s;
+    for(char c: A){
+        
+        if(c!=')'){
+            s.push(c);
+        }else{
+            int cnt=0;
+            while(s.top()!='(') s.pop(),cnt++;
+            if(cnt<2) return true;
+            s.pop();
+            
+            
+        }
+        
+    }
+
+    return false;
+    
+}

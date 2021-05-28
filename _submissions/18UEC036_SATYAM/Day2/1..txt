@@ -1,0 +1,30 @@
+int Solution::maxSubArray(const vector<int> &A) {
+    int currSum=0,maxSum=0,mx=INT_MIN;
+    for(int x:A){
+        currSum+=x;
+        mx=max(mx,x);
+        if(maxSum<currSum){
+            maxSum=currSum;
+        }
+        
+        if(currSum<0){
+            currSum=0;
+        }
+    }
+    
+    return maxSum==0?mx:maxSum;
+}
+/*
+BRUTE FORCE
+O(N^3)
+generating all the subarray and find the subarray which has the maximum sum.
+
+BETTER
+O(N^2)
+we can also implement the above solution with less time complexity.
+
+OPTIMAL
+O(N)
+Kadane's Algorithm
+
+*/

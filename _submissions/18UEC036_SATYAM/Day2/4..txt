@@ -1,0 +1,15 @@
+string Solution::longestCommonPrefix(vector<string> &A) {
+    
+    // sort(A.begin(),A.end());
+    string first=A[0],last=A[0],ans;
+    for(string str:A){
+        first=min(first,str);
+        last=max(last,str);
+    }
+    int i=0,j=0;
+    while(i<first.size()&&j<last.size()&&first[i]==last[j]){
+        ans.push_back(first[i]);
+        i++;j++;
+    }
+    return ans;
+}

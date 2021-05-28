@@ -1,0 +1,26 @@
+void dfs(int idx,int sum,vector<int> curr,vector<int> &A,int n,vector<vector<int>> &ans){
+    
+    if(sum==0){
+        ans.push_back(curr);
+        return ;
+    }
+    if(sum<0||idx==n) return ;
+    
+    for(int i=idx;i<n;i++){
+        
+        if(i>idx&&A[i]==A[i-1]) continue;
+        
+        curr.push_back(A[i]);
+        dfs(i+1,sum-A[i],curr,A,n,ans);
+        curr.pop_back();
+        
+    }
+}
+vector<vector<int> > Solution::combinationSum(vector<int> &A, int B) {
+    
+     vector<vector<int>> ans;
+    sort(A.begin(),A.end());
+    // A.erase(unique(A.begin(), A.end()), A.end());
+    dfs(0,B,vector<int>(),A,A.size(),ans);
+    return ans;
+}

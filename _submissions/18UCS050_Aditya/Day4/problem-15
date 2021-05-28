@@ -1,0 +1,28 @@
+vector<vector<int> > Solution::levelOrder(TreeNode* node) {
+    vector<vector<int>> v;
+    if(!node)
+  return v;
+  queue<TreeNode*> q;
+  q.push(node);
+  while(1)
+  {
+      int nodecount=q.size();
+      if(nodecount==0)
+      break;
+      vector<int> k;
+  while(nodecount>0)
+  {
+   TreeNode* t=q.front();
+   k.push_back(t->val);
+  q.pop();
+  if(t->left)
+  q.push(t->left);
+  if(t->right)
+  q.push(t->right);
+  nodecount--;
+  }
+   v.push_back(k);   
+  }
+  
+  return v;
+}
