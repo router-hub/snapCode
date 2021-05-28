@@ -1,0 +1,27 @@
+public class Solution {
+    public int braces(String A) {
+        Stack<Character> stack = new Stack<>();
+        int count = 0;
+        
+        for(char c : A.toCharArray()){
+            if(c == ')'){
+                int i = 0;
+                while(stack.peek() != '('){
+                    stack.pop();
+                    i++;
+                }
+                if(i > 1)
+                    count = 0;
+                stack.pop();
+                count++;
+                if(count == 2 || i == 1)
+                    return 1;
+            }
+            else{
+                stack.push(c);
+                count = 0;
+            }
+        }
+        return 0;
+    }
+}
