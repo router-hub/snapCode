@@ -1,0 +1,43 @@
+bool fun(vector<int>a,int n,int k,int t){
+    int c=1;
+    int sum=0;
+    for(int i=0;i<n;i++)
+    {
+        if(sum+a[i]>t)
+        {
+            sum=a[i];
+            c++;
+            if(c>k)  
+                return false;
+        }
+        else
+        {
+            sum+=a[i];
+        }
+    }
+    return 1;
+}
+int Solution::books(vector<int> &a, int k) {
+     int n=a.size();
+     if(k>n)  
+     return -1;
+    int s=0,r,total=0;
+    for(int i=0;i<n;i++)
+    {
+        total+=a[i];
+        s=max(s,a[i]);
+    }
+    r=total;
+    int res=s;
+    while(s<=r){
+        int mid=(s+r)/2;
+        if(fun(a,n,k,mid)){
+            res=mid;
+            r=mid-1;
+        }
+        else{
+            s=mid+1;
+        }
+    }
+    return res;
+}

@@ -1,0 +1,12 @@
+from itertools import combinations
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return a list of list of integers
+    def fourSum(self, A, B):
+        D=[]
+        C=list(combinations(A,4))
+        for i in C:
+            if sum(i)==B:
+                D.append(list(i))
+        return D

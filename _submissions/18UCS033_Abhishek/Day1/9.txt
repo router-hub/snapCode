@@ -1,0 +1,20 @@
+void helper(vector<int> &A,int ind,vector<int> &curr,vector<vector<int>> &ans)
+{
+    if(ind>=A.size())
+    {
+    ans.push_back(curr);
+        return;
+    }
+    helper(A,ind+1,curr,ans);
+    curr.push_back(A[ind]);
+    helper(A,ind+1,curr,ans);
+    curr.pop_back();
+}
+vector<vector<int> > Solution::subsets(vector<int> &A) {
+    vector<vector<int>> ans;
+    sort(A.begin(),A.end());
+    vector<int> curr;
+    helper(A,0,curr,ans);
+    sort(ans.begin(),ans.end());
+    return ans;
+}

@@ -1,0 +1,23 @@
+def twoSum(self, A, B):
+        s=set()
+        list2=[]
+        a=0
+        b=0
+        t=0
+        for i in A:
+            temp=B-i
+            if(temp in s):
+                a=temp
+                b=i
+                break
+            s.add(i)
+        for i in range(len(A)):
+            if(A[i]==a):
+                list2.append(i+1)
+                t=i
+                break
+        for i in range(t+1,len(A)):
+            if(A[i]==b):
+                list2.append(i+1)
+                break
+        return list2

@@ -1,0 +1,34 @@
+vector<int> Solution::lszero(vector<int> &a) {
+    int s,e,n=a.size(),len=0,sum=0;
+    
+    map<int,int> mp;
+    mp[0]=-1;
+    for(int i=0;i<n;i++){
+        sum+=a[i];
+        
+        if(mp.find(sum)!=mp.end()){
+            if(len<i-mp[sum]){
+                s=mp[sum]+1;
+                e=i;
+                len=e-s+1;
+            }
+        }
+        else
+        mp[sum]=i;
+        
+    }
+    
+    vector<int> ans;
+    for(int i=s;i<=e;i++){
+        ans.push_back(a[i]);
+    }
+    return ans;
+}
+/*
+BRUTE FORCE O(N^2)
+generate all possible sub array and find the one haaing zero sum and maximum length
+
+OPTIMAL
+O(n),O(n)
+
+*/

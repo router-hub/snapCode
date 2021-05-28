@@ -1,0 +1,16 @@
+void inorder(TreeNode* root,int &v,int &k)
+ {
+     if(root)
+     {
+         inorder(root->left,v,k);
+         k--;
+         if(k==0)
+         v=root->val;
+         inorder(root->right,v,k);
+     }
+ }
+int Solution::kthsmallest(TreeNode* root, int k) {
+    int v;
+    inorder(root,v,k);
+    return v;
+}
