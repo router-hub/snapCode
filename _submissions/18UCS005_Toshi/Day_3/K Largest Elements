@@ -1,0 +1,31 @@
+public class Solution 
+{
+    class Pair implements Comparable<Pair>
+    {
+        int val;
+        public Pair(int val)
+        {
+            this.val = val;
+        }
+        public int compareTo(Pair obj)
+        {
+            return obj.val - this.val;
+        }
+    }
+    public ArrayList<Integer> solve(ArrayList<Integer> A, int B) 
+    {
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        ArrayList<Integer> result = new ArrayList<>();
+        for(int val : A)
+        {
+            pq.offer(new Pair(val));
+        }
+        while(B != 0)
+        {
+            Pair rem = pq.poll();
+            result.add(rem.val);
+            B--;
+        }
+        return result;
+    }
+}

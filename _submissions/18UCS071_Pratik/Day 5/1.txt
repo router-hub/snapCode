@@ -1,0 +1,19 @@
+class Solution:
+    # @param A : integer
+    # @param B : list of integers
+    # @return an integer
+    def solve(self, A, B):
+        if sum(B) % 3 == 0:
+            a = sum(B) / 3
+        else:
+            return 0
+        b = 0
+        c = 0
+        d = 0
+        for i in range(A - 1):
+            d += B[i]
+            if d == a*2:
+                b += c
+            if d == a:
+                c += 1
+        return b
