@@ -15,25 +15,19 @@ class TreeNode {
 public class recoverBST {
   // O(n)
   public ArrayList<Integer> recoverTree(TreeNode A) {
-    A = helper(A); // O(n)
+    A = helper(A);
     ArrayList<Integer> list = new ArrayList<>();
-    TreeNode first = null, second = null, prev = null;
-
-    // O(n)
-    while (A != null) {
-      if (prev == null) {
-        prev = A;
-        A = A.right;
-        continue;
-      }
-      if (A.val < prev.val) {
+    TreeNode first = null, second = null, prev = A;
+    TreeNode curr = A.right;
+    while (curr != null) {
+      if (curr.val < prev.val) {
         if (first == null) {
           first = prev;
         }
-        second = A;
+        second = curr;
       }
-      prev = A;
-      A = A.right;
+      prev = curr;
+      curr = curr.right;
     }
     list.add(Math.min(first.val, second.val));
     list.add(Math.max(first.val, second.val));
@@ -59,5 +53,4 @@ public class recoverBST {
     }
     return res;
   }
-
 }
