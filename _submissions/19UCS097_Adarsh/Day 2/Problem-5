@@ -1,0 +1,17 @@
+unsigned int Solution::reverse(unsigned int A) {
+    unsigned int ans=0;
+    string s;
+    while(A){
+        int k=A%2;
+        if(k==1)s.push_back('1');
+        else s.push_back('0');
+        A/=2;
+    }
+    for(int i=0;i<=32-s.size();i++) s.push_back('0');
+    for(int i=0;i<=32;i++){
+        if(s[32-i]=='1'){
+            ans+=pow(2,i);
+        }
+    }
+    return ans;
+}
