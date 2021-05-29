@@ -1,0 +1,42 @@
+int Solution::snakeLadder(vector<vector<int> > &A, vector<vector<int> > &B) {
+    unordered_map<int,int> m;
+    for(int i=0;i<A.size();i++)
+    m[A[i][0]]=A[i][1];
+    for(int i=0;i<B.size();i++)
+    m[B[i][0]]=B[i][1];
+    
+    queue<int> q;
+    q.push(1);
+    int count=0;
+    int lookup[101];
+    memset(lookup,0,sizeof(lookup));
+    while(!q.empty())
+    {
+        int curr_siz=q.size();
+        while(curr_siz--)
+        {
+            int frnt=q.front();
+            q.pop();
+            if(frnt==100)
+            return count;
+            for(int i=1;i<=6;i++)
+            {
+                if(i+frnt<=100)
+                {
+                    int next=i+frnt;
+                    if(m.find(i+frnt)!=m.end())
+                    {
+                        next=m[next];
+                    }
+                    if(!lookup[next])
+                    {
+                        lookup[next]=1;
+                        q.push(next);
+                    }
+                }
+            }
+        }
+        count++;
+    }
+    return -1;
+}

@@ -1,0 +1,40 @@
+int x[8]={-1,1,0,0,-1,-1,1,1};
+int y[8]={0,0,-1,1,-1,1,-1,1};
+bool check(int xi,int yi,int n,int m)
+{
+    if(xi>=n||xi<0||yi>=m||yi<0)
+    return 0;
+    return 1;
+}
+int ans=0;
+void dfs(int xi,int yi,vector<vector<int>> &a,int &curr)
+{
+    // cout<<xi<<" "<<yi<<"\n";
+    curr++;
+    for(int i=0;i<8;i++)
+    {
+        if(check(xi+x[i],yi+y[i],a.size(),a[0].size())&&a[xi+x[i]][yi+y[i]])
+        {
+            a[xi+x[i]][yi+y[i]]=0;
+            dfs(xi+x[i],yi+y[i],a,curr);
+        }
+    }
+}
+int Solution::solve(vector<vector<int> > &a) {
+    int n=a.size(),m=a[0].size();
+    ans=0;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            if(a[i][j])
+            {
+                int curr=0;
+                a[i][j]=0;
+                dfs(i,j,a,curr);
+                ans=max(ans,curr);
+            }
+        }
+    }
+    return ans;
+}

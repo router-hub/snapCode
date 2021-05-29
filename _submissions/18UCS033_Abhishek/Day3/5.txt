@@ -1,0 +1,28 @@
+int Solution::divide(int A, int B) {
+    int sign=1;
+    if((A<0)^(B<0))
+    sign=-1;
+    long long int ans=0,sum=0;
+    // if(sign==1&&A==INT_MIN)
+    // return INT_MAX;
+    long long x=A;
+    x=abs(x);
+    long long y=B;
+    y=abs(y);
+    // cout<<sign<<" ";
+    for(int i=31;i>=0;i--)
+    {
+        if(sum+(y<<i)<=x)
+        {
+            sum+=(y<<i);
+            ans=ans|(1LL<<i);
+        }
+        // cout<<sum<<" ";
+    }
+    // cout<<ans;
+    if(sign<0)
+    ans=-ans;
+    if(ans>=INT_MAX||ans<INT_MIN)
+    return INT_MAX;
+    return ans;
+}

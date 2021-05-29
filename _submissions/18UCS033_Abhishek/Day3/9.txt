@@ -1,0 +1,35 @@
+vector<vector<int>> ans;
+void find_all(vector<int> &a,int sum,int ind,vector<int> &v)
+{
+    if(sum==0)
+    {
+        ans.push_back(v);
+        return;
+    }
+    if(ind<0)
+    return;
+    if(sum<a[ind])
+    {
+        find_all(a,sum,ind-1,v);
+    }
+    else
+    {
+        find_all(a,sum,ind-1,v);
+        v.push_back(a[ind]);
+        find_all(a,sum-a[ind],ind-1,v);
+        v.pop_back();
+    }
+}
+vector<vector<int> > Solution::combinationSum(vector<int> &A, int B) {
+    // Do not write main() function.
+    // Do not read input, instead use the arguments to the function.
+    // Do not print the output, instead return values as specified
+    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details
+    sort(A.begin(),A.end(),greater<int>());
+    vector<int> v;
+    ans.clear();
+    find_all(A,B,A.size()-1,v);
+    auto it=unique(ans.begin(),ans.end());
+    ans.resize(distance(ans.begin(),it));
+    return ans;
+}

@@ -1,0 +1,32 @@
+vector<vector<int>> ans;
+void currcomb(vector<int> &v,int ind,int B,vector<int> &curr)
+{
+    if(B==0)
+    {
+        ans.push_back(curr);
+        return;
+    }
+    if(ind<0)
+    return;
+    if(v[ind]>B)
+    currcomb(v,ind-1,B,curr);
+    else
+    {
+        currcomb(v,ind-1,B,curr);
+        curr.push_back(v[ind]);
+        currcomb(v,ind,B-v[ind],curr);
+        currcomb(v,ind-1,B-v[ind],curr);
+        curr.pop_back();
+    }
+}
+vector<vector<int> > Solution::combinationSum(vector<int> &A, int B) {
+    ans.clear();
+    vector<int> curr;
+    currcomb(A,A.size()-1,B,curr);
+    for(int i=0;i<ans.size();i++)
+    sort(ans[i].begin(),ans[i].end());
+    sort(ans.begin(),ans.end());
+    auto it =unique(ans.begin(), ans.end());
+    ans.resize(distance(ans.begin(), it));
+    return ans;
+}

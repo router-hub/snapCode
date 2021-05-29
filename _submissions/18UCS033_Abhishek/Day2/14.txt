@@ -1,0 +1,12 @@
+int Solution::bulbs(vector<int> &A) {
+    int adder=0,c=0;
+    for(int i=0;i<A.size();i++)
+    {
+        if((A[i]+adder)%2==0)
+        {
+            adder=1-adder;
+            c++;
+        }
+    }
+    return c;
+}
