@@ -1,16 +1,16 @@
 import java.util.*;
 
-class ListNode {
-  public int val;
-  public ListNode next;
-
-  ListNode(int x) {
-    val = x;
-    next = null;
-  }
-}
-
 public class mergeKSortedLists {
+  class ListNode {
+    public int val;
+    public ListNode next;
+
+    ListNode(int x) {
+      val = x;
+      next = null;
+    }
+  }
+
   public ListNode mergeKLists(ArrayList<ListNode> a) {
     PriorityQueue<ListNode> pq = new PriorityQueue<>((x, y) -> x.val - y.val);
     for (ListNode node : a)
