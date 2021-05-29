@@ -1,0 +1,11 @@
+int Solution::sqrt(int A) {
+    int l=1, h=A;
+    if(A==0||A==1) return A;
+    while(l<h){
+        long long int m=l+(h-l)/2;
+        if(m*m==A) return m;
+        else if(m*m<A) l=m+1;
+        else h=m;
+    }
+    return l-1;
+}
