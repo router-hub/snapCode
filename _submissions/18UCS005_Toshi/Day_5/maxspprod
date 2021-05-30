@@ -1,0 +1,46 @@
+class Maxpprod 
+{
+    public static int maxSpecialProduct(ArrayList<Integer> A) 
+    {
+        int [] left = new int[A.size()];
+        int [] right = new int[A.size()];
+        Stack<Integer> stack = new Stack<>();
+        int i = 0;
+        while( i < A.size())
+        {
+            if(!stack.isEmpty())
+            {
+                while(!stack.isEmpty() && A.get(stack.peek()) <= A.get(i))
+                {
+                    stack.pop();
+                }
+            }
+			left[i] = stack.isEmpty() == true ? - 1 : stack.peek();
+            stack.push(i);
+            i++;
+        }
+        i = A.size() - 1;
+		stack = new Stack<>();
+        while( i >= 0)
+        {
+            if(!stack.isEmpty())
+            {
+                while(!stack.isEmpty() && A.get(stack.peek()) <= A.get(i))
+                {
+                    stack.pop();
+                }
+            }
+            right[i] = stack.isEmpty() == true ? - 1 : stack.peek();
+            stack.push(i);
+            i--;
+        }
+       
+        Integer max = 0;
+        for(int j = 0; j < A.size(); j++)
+        {
+         
+           max = Math.max(prod,left[j]*right[j]);
+        }
+		
+        return (int) max*(Math.pow(10,9)+7);
+    }
