@@ -1,0 +1,14 @@
+int Solution::findMinXor(vector<int> &A) {
+    sort(A.begin(),A.end());
+    int lx=INT_MAX,cx=-1,cd=-1,ld=INT_MAX;
+    for(int i=0;i<A.size()-1;i++)
+    {
+        cd=A[i+1]-A[i];
+        cx=A[i]^A[i+1];
+        if(cx<lx )
+        {
+           lx=cx;
+        }    
+    }
+    return lx;
+}
