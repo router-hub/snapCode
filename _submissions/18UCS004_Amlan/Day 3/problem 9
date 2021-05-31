@@ -1,0 +1,29 @@
+public class Solution {
+    public ArrayList<ArrayList<Integer>> combinationSum(ArrayList<Integer> a, int b) {
+    Collections.sort(a);
+    ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
+    ArrayList<Integer> temp = new ArrayList<Integer>();
+    solve(ans, temp, 0, a, b);
+    return ans;
+    }
+    public void solve(ArrayList<ArrayList<Integer>> ans, ArrayList<Integer> temp, int idx, ArrayList<Integer> a, int b){
+        if(b == 0){
+            ans.add(new ArrayList<>(temp));
+            return;
+        }
+        if(b < 0)
+            return;
+        for(int j = idx; j < a.size(); j = nextLarge(a, j + 1)){
+            if(b < a.get(j))
+                break;
+            temp.add(a.get(j));
+            solve(ans, temp, j + 1, a, b - a.get(j));
+            temp.remove(temp.size() - 1);
+        }
+    }
+    public int nextLarge(ArrayList<Integer> al, int i){
+        while(i < al.size() && al.get(i) == al.get(i - 1))
+            i++;
+        return i;
+    }
+}

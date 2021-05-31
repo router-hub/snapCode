@@ -1,0 +1,18 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public ArrayList<Integer> twoSum(final List<Integer> A, int B) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        ArrayList<Integer> res = new ArrayList<>();
+        for(int i = 0; i < A.size(); i++){
+            int x = A.get(i), y = B - x;
+            if(map.containsKey(x)){
+                res.add(map.get(x) + 1);
+                res.add(i + 1);
+                break;
+            }
+            else if(!map.containsKey(y))
+                map.put(y, i);
+        }
+        return res;
+    }
+}

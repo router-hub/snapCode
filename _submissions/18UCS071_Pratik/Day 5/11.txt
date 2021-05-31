@@ -1,0 +1,20 @@
+class Solution:
+    # @param A : list of linked list
+    # @return the head node in the linked list
+    def mergeKLists(self, A):
+        B = []
+        for i in A:
+            while i:
+                B.append(i.val)
+                i = i.next
+        B.sort()
+        node = None
+        cur = None
+        for val in B:
+            if node == None:
+                node = ListNode(val)
+                cur = node
+            else:
+                cur.next = ListNode(val)
+                cur = cur.next
+        return node

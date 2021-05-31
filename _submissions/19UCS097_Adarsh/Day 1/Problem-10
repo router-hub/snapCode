@@ -1,0 +1,16 @@
+int Solution::colorful(int A) {
+    unordered_map<int, int>mp;
+    int mul, a;
+    while(A){
+        int mul = 1;
+        int a = A;
+        while(a){
+            mul *= a % 10;
+            a /= 10;
+            if(mp[mul] == 1) return 0;
+            mp[mul] = 1;
+        }
+        A /= 10;
+    }
+    return 1;
+}

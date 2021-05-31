@@ -1,0 +1,33 @@
+public class Solution 
+{
+     public static class Pair implements Comparable<Pair>
+    {
+        int val;
+        public Pair(int val)
+        {
+            this.val = val;
+        }
+        public int compareTo(Pair obj)
+        {
+            return obj.val - this.val;
+        }
+    }
+    public static int nchoc(int A, ArrayList<Integer> B)
+    {
+     double sum =0;
+     PriorityQueue<Pair> pq = new PriorityQueue<>();
+     for(int i = 0; i < B.size(); i++)
+     {
+         pq.offer(new Pair(B.get(i)));
+     }
+     while(A!= 0)
+     {
+         Pair rem = pq.poll();
+         sum += rem.val ;
+         pq.offer(new Pair(rem.val/2));
+         A--;
+     }
+     
+     return (int) (sum % 1000000007);
+    }
+}
