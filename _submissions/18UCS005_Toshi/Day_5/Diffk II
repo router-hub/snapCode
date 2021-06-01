@@ -1,0 +1,19 @@
+public class Solution {
+   
+    public int diffPossible(final List<Integer> A, int B) 
+    {
+    Set<Integer> set=new HashSet<Integer>();
+	for(int i=0;i<A.size();i++)
+	{
+	  if(!set.isEmpty())
+	  {
+	     if(set.contains(A.get(i)+B) || set.contains(A.get(i)-B))
+	     {
+	         return 1;
+	     }
+	  }
+	  set.add(A.get(i));
+	}
+	return 0;
+    }
+}
