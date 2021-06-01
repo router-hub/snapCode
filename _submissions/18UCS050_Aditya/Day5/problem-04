@@ -1,0 +1,20 @@
+int Solution::strStr(const string A, const string B) {
+    int i,k,j,c;
+    if(A.length()<B.length())
+    return -1;
+    for(i=0;i<A.length()-B.length()+1;i++)
+    {k=i;c=0;j=0;
+     while(j<B.length())
+     {
+         if(A[k]==B[j])
+         {
+             c++;
+         }
+         else if(A[k]!=B[j])break;
+         j++;
+         k++;
+     }
+     if(c==B.length())
+     return i;
+    }return -1;
+}

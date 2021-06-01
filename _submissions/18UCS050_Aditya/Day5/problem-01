@@ -1,0 +1,36 @@
+int Solution::solve(int n, vector<int> &A) {
+    int sum=0;
+    for(int i=0;i<A.size();i++)
+        sum+=A[i];
+    if(sum%3)
+        return 0;
+    sum=sum/3;
+    
+    int s=0;
+    int ind[A.size()]={0},ind2[A.size()]={0};
+    for(int i=0;i<=A.size()-2;i++)
+    {
+        ind[i]=0;
+        ind2[i]=0;
+        s+=A[i];
+        if(s==sum && i<A.size()-2)
+        {
+            ind[i]=1;
+        }
+        if(s==2*sum)
+        {
+            ind2[i]=1;
+        }
+    }
+    int ans=0;
+    for(int i=A.size()-2;i>=0;i--)
+    {
+        ind2[i]=ind2[i]+ind2[i+1];
+    }
+    for(int i=0;i<A.size()-2;i++)
+    {
+       if(ind[i]==1) ans+=ind2[i+1];
+    }
+
+return ans;
+}

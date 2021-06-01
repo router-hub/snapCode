@@ -1,0 +1,19 @@
+#define ll long long int
+int Solution::sqrt(int A) {
+    if(A==0||A==1)
+    return A;
+    int l=0,r=A;
+    while(l<r)
+    {
+        int mid=l+(r-l)/2;
+        if((ll)mid*(ll)mid>A)
+        r=mid;
+        else if((ll)mid*(ll)mid==A)
+        return mid;
+        else if((ll)(mid+1)*(ll)(mid+1)>A)
+        return mid;
+        else
+        l=mid;
+    }
+    return l;
+}

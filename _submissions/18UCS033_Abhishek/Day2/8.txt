@@ -1,0 +1,38 @@
+string Solution::simplifyPath(string A) {
+    vector<string> s;
+    bool b=0;
+    string temp;
+    for(int i=1;i<A.size();i++)
+    {
+        if(A[i]=='/')
+        {
+            if(temp=="..")
+            {
+                if(s.size())
+                s.pop_back();
+            }
+            else if(temp.size()&&isalpha(temp[0]))
+            s.push_back(temp);
+            temp.clear();
+        }
+        else
+        temp+=A[i];
+    }
+    if(temp=="..")
+            {
+                if(s.size())
+                s.pop_back();
+            }
+            else if(temp.size()&&isalpha(temp[0]))
+            s.push_back(temp);
+            temp.clear();
+    string ans;
+    for(int i=0;i<s.size();i++)
+    {
+        ans+='/';
+        ans+=s[i];
+    }
+    if(ans.size()==0)
+    return "/";
+    return ans;
+}

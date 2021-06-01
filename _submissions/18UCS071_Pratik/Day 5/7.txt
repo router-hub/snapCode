@@ -1,0 +1,35 @@
+class Solution:
+    # @param A : head node of linked list
+    # @return an integer
+    def lPalin(self, A):
+        B=[]
+        while(A) is not None:
+            B.append(A.val)
+            A=A.next
+        C=B[::-1]
+        if B==C:
+            return 1
+        else:
+            return 0
+
+
+			OR
+class Solution:
+    # @param A : head node of linked list
+    # @return an integer
+    def lPalin(self, A):
+        temp=self
+        prev = None
+        current = A
+        while(current is not None):
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        A = prev
+        if A==temp:
+            return 1
+        else:
+            return 0
+
+

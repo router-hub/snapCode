@@ -1,0 +1,25 @@
+public class Solution {
+    public int maxArr(ArrayList<Integer> A) 
+    {
+        int result = Integer.MIN_VALUE;
+        int max1 = Integer.MIN_VALUE , max2 = Integer.MIN_VALUE,max3 = Integer.MIN_VALUE,max4 = Integer.MIN_VALUE;
+        int min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE, min3 = Integer.MAX_VALUE, min4 = Integer.MAX_VALUE;
+        for(int i = 0; i < A.size(); i++)
+        {
+          max1 = Math.max(max1,A.get(i)+i);
+          max2 = Math.max(max2,A.get(i)-i);
+          max3 = Math.max(max3,-A.get(i)+i);
+          max4 = Math.max(max4,-A.get(i)-i);
+          
+          min1 = Math.min(min1,A.get(i)+i);
+          min2 = Math.min(min2,A.get(i)-i);
+          min3 = Math.min(min3,-A.get(i)+i);
+          min4 = Math.min(min4,-A.get(i)-i);
+        }
+        result = Math.max(result,max1 - min1);
+         result = Math.max(result,max2 - min2);
+          result = Math.max(result,max3 - min3);
+           result = Math.max(result,max4 - min4);
+        return result;
+    }
+}

@@ -1,0 +1,26 @@
+int Solution::braces(string A) {
+    stack<char> s;
+    for(int i=0;i<A.size();i++)
+    {
+        if(A[i]==')')
+        {
+            if(!isalpha(s.top()))
+            return 1;
+            s.pop();
+            if(isalpha(s.top())||s.top()=='('||s.top()==')')
+            return 1;
+            s.pop();
+            if(!isalpha(s.top()))
+            return 1;
+            s.pop();
+            if(s.top()!='(')
+            return 1;
+            s.pop();
+            s.push('a');
+        }
+        else
+        s.push(A[i]);
+    }
+    return 0;
+}
+

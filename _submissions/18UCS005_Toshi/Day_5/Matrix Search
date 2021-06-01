@@ -1,0 +1,23 @@
+public class Solution {
+    public int searchMatrix(ArrayList<ArrayList<Integer>> A, int B) 
+    {
+        int l = 0;
+        int r = A.get(0).size() - 1;
+        while(l < A.size() && r >= 0)
+        {
+            if(A.get(l).get(r) == B)
+            {
+                return 1;
+            }
+            else if(A.get(l).get(r) > B)
+            {
+                r--;
+            }
+            else
+            {
+                l++;
+            }
+        }
+        return 0;
+    }
+}
