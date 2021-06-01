@@ -1,0 +1,8 @@
+class Solution:
+    # @param A : string
+    # @return an integer
+    def titleToNumber(self, A):
+        count = 0
+        for i in range(len(A)):
+            count+= (ord(A[i])-64)*(26**(len(A)-i-1))
+        return count
