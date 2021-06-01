@@ -1,0 +1,18 @@
+from itertools import combinations
+class Solution:
+    # @param A : list of integers
+    # @return an integer
+    def maxArr(self, A):
+        D=[]
+        E=[]
+        F=[]
+        B=list(combinations(A,2))
+        for i in B:
+            i=abs(i[0]-i[1])
+            D.append(i)
+        C=list(combinations(range(len(A)),2))
+        for j in C:
+            j=abs(j[0]-j[1])
+            E.append(j)
+        F = [D[k] + E[k] for k in range(len(D))]
+        return(max(F))
