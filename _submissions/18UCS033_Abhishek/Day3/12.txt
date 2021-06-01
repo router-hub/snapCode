@@ -1,0 +1,23 @@
+/**
+ * Definition for binary tree
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+ unordered_set<int> s;
+bool helper(TreeNode* A,int B)
+{
+    if(!A)
+    return 0;
+    if(s.find(B-A->val)!=s.end())
+    return 1;
+    s.insert(A->val);
+    return helper(A->left,B)||helper(A->right,B);
+}
+int Solution::t2Sum(TreeNode* A, int B) {
+    s.clear();
+    return helper(A,B);
+}

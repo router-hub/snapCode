@@ -1,0 +1,28 @@
+/**
+ * Definition for binary tree
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+ void ans(TreeNode* A,int *value,int *ret)
+ {
+     if(A==NULL)
+     return;
+    //  cout<<A->val<<" ";
+     ans(A->left,value,ret);
+     if(*value==1)
+     {
+         *ret=A->val;
+        //  return;
+     }
+     (*value)--;
+     ans(A->right,value,ret);
+ }
+int Solution::kthsmallest(TreeNode* A, int B) {
+    int ret=-1;
+    ans(A,&B,&ret);
+    return ret;
+}

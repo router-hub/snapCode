@@ -1,0 +1,29 @@
+vector<vector<int> > Solution::threeSum(vector<int> &a) {
+    sort(a.begin(),a.end());
+    vector<vector<int>> ans;
+    for(int i=0;i<a.size();i++)
+    {
+        if(ans.size()!=0&&ans[ans.size()-1][0]==a[i])
+        continue;
+        int j=i+1,k=a.size()-1;
+        while(j<k)
+        {
+            long long int z=a[i],y=a[j],x=a[k];
+            if((-z)==(x+y))
+            {
+                if(ans.size()==0||(a[i]!=ans[ans.size()-1][0])||(a[j]!=ans[ans.size()-1][1])||(a[k]!=ans[ans.size()-1][2]))
+                ans.push_back({a[i],a[j],a[k]});
+                
+                j++;
+                k--;
+            }
+            else if((-z)>(x+y))
+            {
+                j++;
+            }
+            else
+            k--;
+        }
+    }
+    return ans;
+}
