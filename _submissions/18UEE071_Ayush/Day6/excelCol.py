@@ -14,3 +14,12 @@ class Solution:
                 sum_ = sum_ + ((26**(t))*(chars.index(A[i])+1))
                 t -= 1
             
+
+
+
+class Calc:
+    def getSum(self, a, b):
+        return a+b
+a= int(input('Enter a'))
+b= int(input('Enter b'))
+print(Calc.getSum(a,b))
