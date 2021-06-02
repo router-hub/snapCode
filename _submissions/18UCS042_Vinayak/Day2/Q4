@@ -1,0 +1,23 @@
+string pre(string a,string b)
+{
+    string c="";
+    int s = min(a.size(),b.size());
+    for(int i=0;i<s;i++)
+    {
+        if(a[i]==b[i])
+        c+=a[i];
+        else break;
+    }
+    return c;
+}
+
+
+string Solution::longestCommonPrefix(vector<string> &A) {
+    string res=A[0];
+    int s= A.size();
+    for(int i=1;i<s;i++)
+    {
+        res=pre(res,A[i]);
+    }
+    return res;
+}

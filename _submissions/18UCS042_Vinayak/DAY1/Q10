@@ -1,0 +1,18 @@
+int Solution::colorful(int A) 
+{
+    unordered_map<int ,int> m;
+    int a[10]={0};
+    while(A!=0)
+    {
+        int p=1, curr= A;
+        while(curr) {
+            p = p*(curr%10);
+            if(m.find(p) != m.end())return 0;
+            m[p] = true;
+            curr /= 10;
+        }
+        A /= 10;
+    }
+    return 1;
+}
+

@@ -1,0 +1,22 @@
+int Solution::isPalindrome(string S) {
+    
+    string s2="";
+    int  i = 0;
+    int  len = S.length();
+    while(i < len){
+    if (isalnum(S[i])){
+        s2+=S[i];
+        i++;
+    }else
+    // s2+=S[i];
+        i++;
+    }
+    S=s2;
+    transform(S.begin(), S.end(), S.begin(), ::tolower);
+    int h=S.length()-1;
+    int l=0;
+    string s1=S;
+    reverse(S.begin(),S.end());
+    // cout<<S;
+    return s1==S;
+}
