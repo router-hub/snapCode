@@ -1,0 +1,26 @@
+ListNode* Solution::deleteDuplicates(ListNode* A) 
+{
+    if(!A or !A->next)
+        return A;
+    unordered_map<int,int> hashmap;
+    auto temp = A;
+    while(temp)
+    {
+        hashmap[temp->val]++;
+        temp =temp->next;
+    }
+    temp = A;
+    ListNode* head;
+    auto t = head;
+    while(temp)
+    {
+        if(hashmap[temp->val] == 1)
+        {
+            t->next = new ListNode(temp->val);
+            t = t->next;
+        }
+        temp = temp->next;
+    }
+    t->next = NULL;
+    return head->next;
+}
