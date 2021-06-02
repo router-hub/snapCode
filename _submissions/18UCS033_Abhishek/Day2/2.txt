@@ -1,0 +1,46 @@
+int Solution::hammingDistance(const vector<int> &A) {
+    // int ans=0;
+    // for(int i=0;i<A.size();i++)
+    // {
+    //     for(int j=0;j<A.size();j++)
+    //     {
+    //         int x=A[i],y=A[j];
+    //         while(x||y)
+    //         {
+    //             if((x&1)!=(y&1))
+    //             {
+    //                 ans++;
+    //             }
+    //             x>>=1;
+    //             y>>=1;
+    //         }
+    //     }
+    // }
+    // return ans;
+    int n=A.size();
+    if(n<=1)
+    return 0;
+    int z[32],o[32];
+    memset(z,0,sizeof(z));
+    memset(o,0,sizeof(o));
+    for(int i=0;i<n;i++)
+    {
+        int x=A[i];
+        for(int j=0;j<32;j++)
+        {
+            if(x&1)
+            o[j]++;
+            else
+            z[j]++;
+            x>>=1;
+        }
+    }
+    long long int ans=0;
+    for(int i=0;i<32;i++)
+    {
+        // cout<<o[i]<<" "<<z[i]<<" ";
+        ans=(ans+((long long int)z[i]*(long long int)o[i]))%1000000007;
+        // cout<<ans<<" ";
+    }
+    return (2LL*ans)%1000000007;
+}

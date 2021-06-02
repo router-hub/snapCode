@@ -1,0 +1,36 @@
+int Solution::maxSpecialProduct(vector<int> &A) {
+     int n=A.size();
+    long int a[n],b[n];
+    stack<long int>s;
+    for(int i=n-1;i>=0;i--)
+        {
+            while(!s.empty() && A[i]>=A[s.top()])
+            {
+                s.pop();
+            }
+            if(!s.empty())
+            b[i]=s.top();
+            else
+            b[i]=-1;
+            s.push(i);
+        }
+     
+    stack<long int>t;
+    for(int i=0;i<n;i++)
+    {
+        while(!t.empty() && A[i]>=A[t.top()])
+            {
+                t.pop();
+            }
+            if(!t.empty())
+            a[i]=t.top();
+            else
+            a[i]=0;
+            t.push(i);
+    }
+    long int ans=0;
+    for(int i=0;i<n;i++)
+        ans=max(ans,a[i]*b[i]);
+      
+      return ans%1000000007;
+}

@@ -1,0 +1,16 @@
+int Solution::seats(string A) {
+    vector<int>p;
+    for(int i=0;i<A.size();i++)
+        if(A[i]=='x')
+            p.push_back(i);
+    
+    int m=p.size()/2,ans=0;
+    
+    for(int i=0;i<p.size();i++)
+    {
+        int x=p[i];
+        int y=p[m]-(m-i);
+        ans=(ans+abs(x-y))%10000003;
+    }
+    return ans;
+}

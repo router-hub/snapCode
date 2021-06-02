@@ -1,0 +1,26 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+int Solution::lPalin(ListNode* A) {
+    vector<int> a;
+    struct ListNode *t=A,*t1=A,*q=A,*n,*p,*head;
+    int i=0;
+    while(t!=NULL)
+    {
+        a.push_back(t->val);
+        i++;
+        p=rem
+        t=t->next;
+    }
+    for(int j=0;j<a.size()/2;j++)
+    {
+        if(a[j]!=a[a.size()-1-j])
+        return 0;
+    }
+    return 1;
+}

@@ -1,0 +1,26 @@
+vector<int> Solution::plusOne(vector<int> &A) {
+    int c=1;
+    for(int i=A.size()-1;i>=0;i--)
+    {
+        A[i]+=c;
+        c=A[i]/10;
+        A[i]%=10;
+    }
+    if(c)
+    {
+        A.push_back(A[A.size()-1]);
+        for(int i=A.size()-1;i>0;i--)
+        {
+            A[i]=A[i-1];
+        }
+        A[0]=1;
+    }
+    int co=-1;
+    for(int i=0;i<A.size();i++)
+    {
+        if(A[i]!=0)
+        break;
+        co=i;
+    }
+    return vector<int>(A.begin()+co+1,A.end());
+}
