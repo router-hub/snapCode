@@ -1,0 +1,20 @@
+vector<vector<int> > Solution::subsets(vector<int> &A) {
+    int s =A.size();
+    sort(A.begin(),A.end());
+    unsigned int pows= pow(2,s);
+    vector<vector<int> > res;
+    for(int i=0;i<pows;i++)
+    {
+        vector<int> temp;
+        for(int j=0;j<s;j++)
+        {
+            if(i & (1<<j))
+            temp.push_back(A[j]);
+        }
+        sort(temp.begin(),temp.end());
+        res.push_back(temp);
+        
+    }
+    sort(res.begin(),res.end());
+    return res;
+}

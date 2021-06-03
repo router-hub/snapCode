@@ -1,0 +1,11 @@
+int Solution::coverPoints(vector<int> &A, vector<int> &B) {
+    int n =A.size();
+    int res=0;
+    for(int i=1;i<n;i++)
+    {
+      int x= abs(A[i]-A[i-1]); 
+      int y= abs(B[i]-B[i-1]);  
+      res+=max(x,y);
+    }
+    return res;
+}

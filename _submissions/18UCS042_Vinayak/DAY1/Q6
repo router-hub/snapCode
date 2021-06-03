@@ -1,0 +1,11 @@
+int Solution::solve(vector<int> &A, int B) 
+{
+    int s= A.size();
+    for(int i=0;i<s-1;i++)
+    for(int j=i+1;j<s;j++)
+    {
+        if((A[i]-A[j])==B||(A[i]-A[j])==-B)
+        return 1;
+    }
+    return 0;
+}

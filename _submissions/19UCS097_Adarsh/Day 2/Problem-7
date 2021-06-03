@@ -1,0 +1,37 @@
+ListNode* Solution::partition(ListNode* A, int B) {
+    ListNode* l1=NULL,* l2=NULL;
+    ListNode* l1_temp,* l2_temp;
+    while(A!=NULL){
+        if(A->val<B){
+            if(l1 == NULL){
+                l1 = A;
+                l1_temp = l1;
+            }
+            else{
+                l1_temp->next = A;
+                l1_temp = l1_temp->next;
+            }
+        }
+        if(A->val>=B){
+            if(l2 == NULL){
+                l2 = A;
+                l2_temp = l2;
+            }
+            else{
+                l2_temp->next = A;
+                l2_temp = l2_temp->next;
+            }  
+        }
+        A=A->next;
+    }
+    
+    if(l1 == NULL){
+        return l2;
+    }
+    if(l2 == NULL){
+        return l1;
+    }
+    l1_temp->next = l2;
+    l2_temp->next=NULL;
+    return l1;
+}

@@ -1,0 +1,20 @@
+    # @return a list of integers
+    def __init__(self):
+        self.path=list()
+    def solve(self, A, B):
+        if (self.helper(A,B)):
+            return self.path
+        
+    def helper(self,A,B):
+        if (not A):
+            return False
+    
+        self.path.append(A.val)
+        if (A.val==B):
+            return True
+    
+        if (self.helper(A.left,B) or self.helper(A.right,B)):
+            return True
+    
+        self.path.pop(-1)
+        return False

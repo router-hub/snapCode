@@ -1,0 +1,24 @@
+int Solution::threeSumClosest(vector<int> &A, int B) {
+    int diff=INT_MAX,sum=0,res=0;
+    sort(A.begin(),A.end());
+    for(int i=0;i<A.size();i++){
+        int lo=i+1,hi=A.size()-1;
+        while(lo<hi){
+            sum=A[i]+A[lo]+A[hi];
+            if(abs(B-sum)<0){
+                abs(B-sum) = -abs(B-sum);
+            }
+            if(abs(B-sum)<diff){
+                diff=abs(B-sum);
+                res=sum;
+            }
+            if(sum<B){
+                lo++;
+            }
+            else{
+                hi--;
+            }
+        }
+    }
+    return res;
+}

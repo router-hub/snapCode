@@ -1,0 +1,9 @@
+int Solution::sqrt(int a) {
+    long long int i=0;
+    while(i*i<=a)
+    {
+        i++;
+    }
+    if(i*i>a)i--;
+    return i;
+}
