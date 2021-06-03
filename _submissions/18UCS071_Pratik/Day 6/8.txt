@@ -1,0 +1,15 @@
+class Solution:
+	# @param A : list of integers
+	# @return a list of integers
+	def prevSmaller(self, A):
+        B = []
+        result = []
+        for num in A:
+            while B and B[-1] >= num:
+                B.pop()
+            if B:  
+                result.append(B[-1])
+            else:  
+                result.append(-1)
+            B.append(num)  
+        return result
