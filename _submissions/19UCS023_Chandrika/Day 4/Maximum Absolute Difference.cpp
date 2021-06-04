@@ -2,6 +2,7 @@ int Abs_Sum(vector<int>&A,int i,int j)
 {
     return abs(A[i]-A[j])+abs(i-j);
 }
+
 int Solution::maxArr(vector<int> &A) {
     int maxAbs_Sum=INT_MIN;
     for(int i=0;i<A.size();i++)
