@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class scrambleString {
+  // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
   public int isScramble(final String A, final String B) {
     HashMap<String, Boolean> map = new HashMap<>();
     return helper(A, B, map) ? 1 : 0;
@@ -23,8 +24,8 @@ public class scrambleString {
         ok = true;
         break;
       }
-      if (helper(A.substring(n - i, n), B.substring(0, i), map)
-          && helper(A.substring(0, n - i), B.substring(i, n), map)) {
+      if (helper(A.substring(0, i), B.substring(n - i, n), map)
+          && helper(A.substring(i, n), B.substring(0, n - i), map)) {
         ok = true;
         break;
       }
