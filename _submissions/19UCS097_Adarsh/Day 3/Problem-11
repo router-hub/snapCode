@@ -1,0 +1,6 @@
+vector<int> Solution::solve(vector<int> &A, int B) {
+    sort(A.begin(),A.end());
+    vector<int>v;
+    for(int i=B;i<A.size();i++) v.push_back(A[i]);
+    return v;
+}
