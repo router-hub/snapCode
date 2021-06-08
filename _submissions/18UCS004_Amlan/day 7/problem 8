@@ -1,0 +1,31 @@
+public class Solution {
+    public int largestRectangleArea(ArrayList<Integer> A) {
+        if(null == A || A.isEmpty()){
+        return 0;
+        }
+        if(A.size() == 1){
+            return A.get(0);
+        }
+        int max = 0;
+        Stack<Integer> stack = new Stack<Integer>();
+        int i = 0;
+        while(i<A.size()){
+            if(stack.isEmpty() || A.get(stack.peek()) <= A.get(i)){
+                stack.push(i);
+                i++;
+            }else{ //A.get(stack.peek()) > A.get(i)
+                int top = stack.pop();
+                int height = A.get(top);
+                int width = stack.isEmpty()? i : (i - stack.peek() - 1);
+                max = Math.max(max, height * width);
+            }
+        }
+        while(!stack.isEmpty()){
+            int top = stack.pop();
+            int height = A.get(top);
+            int width = stack.isEmpty()? i : (i - stack.peek() - 1);
+            max = Math.max(max, height * width);
+        }
+        return max;
+    }
+}
