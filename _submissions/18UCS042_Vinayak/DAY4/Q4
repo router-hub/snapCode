@@ -1,25 +1,18 @@
-string Solution::countAndSay(int n) 
+bool is_amazing(char C)
 {
-    if(n==1)return "1";
-    if(n==2)return "11";
-    string s="11";
-    for(int i=3;i<=n;i++)
-    {
-        string t ="";
-        s+="&";
-        int c=1;
-        for(int j=1;j<s.size();j++)
-        {
-            if(s[j]!=s[j-1])
-            {
-                t+=to_string (c);
-                c=1;
-                t+=s[j-1];
-            }
-            else
-            c++;
-        }
-        s=t;
+    string s = "aeiouAEIOU";
+    for(auto i :s)
+    if(i==C) return true;
+    return false;
+}
+
+
+int Solution::solve(string A) {
+    int k=A.size(),s=0;
+    for(int i=0;i<k;i++)
+    if(is_amazing(A[i])){
+        s+=(k-i);
+        s%=10003;
     }
     return s;
 }
