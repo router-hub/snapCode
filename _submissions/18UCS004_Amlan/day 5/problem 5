@@ -1,0 +1,13 @@
+public class Solution {
+    public int diffPossible(ArrayList<Integer> A, int B) {
+        for(int j = A.size()-1 ; j >= 0 ; j--){
+            for(int i = 0; i < j; i++){
+                if(A.get(j) - A.get(i) == B)
+                    return 1;
+                if(A.get(j) - A.get(i) < B)
+                    break;
+            }
+        }
+        return 0;
+    }
+}
