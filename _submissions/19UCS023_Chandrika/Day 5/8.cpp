@@ -1,4 +1,5 @@
-int Solution::maxSpecialProduct(vector<int> &A) {
+int Solution::maxSpecialProduct(vector<int> &A)
+{
     long long int ans=INT_MIN;
     long long int mod=1000000007;
     stack<int>s;
