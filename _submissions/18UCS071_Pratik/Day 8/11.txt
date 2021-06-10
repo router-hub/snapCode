@@ -1,0 +1,33 @@
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return a list of integers
+    def dNums(self, A, B):
+        res = []
+        num_idx_dict = {}
+        nSet = None
+        lst = []
+        if B > len(A):
+            return []
+    
+        i = 0   
+        while i < B-1:
+            num_idx_dict[A[i]] = i
+            i += 1
+        
+        while i < len(A):
+        
+   
+            num_idx_dict[A[i]] = i
+            if i > B-1:
+                idx = num_idx_dict[A[i-B]]
+                if idx < i-B+1:
+                    del num_idx_dict[A[i-B]]
+                
+       
+            res.append(len(num_idx_dict))
+    
+            i += 1
+    
+   
+        return res
