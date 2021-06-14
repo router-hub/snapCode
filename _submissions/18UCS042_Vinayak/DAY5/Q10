@@ -1,0 +1,11 @@
+int Solution::diffPossible(const vector<int> &A, int k) {
+    unordered_set<int> set;
+    set.insert(A[0]);
+    for(int i=1;i<A.size();i++)
+    {
+        if(set.find(A[i]-k)!=set.end()||set.find(A[i]+k)!=set.end())
+        return 1;
+        set.insert(A[i]);
+    }
+    return 0;
+}
