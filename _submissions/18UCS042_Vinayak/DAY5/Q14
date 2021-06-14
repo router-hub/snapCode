@@ -1,0 +1,19 @@
+int Solution::seats(string A) {
+    int n = A.size();
+    vector<int> v;
+    int s=0;
+    for(int i=0;i<n;i++)
+    {
+        if(A[i]=='x')
+        {
+        v.push_back(i);
+        }
+    }
+    int med1 = floor(v.size()/2),res1=0;
+    for(int i=0;i<v.size();i++)
+    {
+        res1=(res1+abs(v[med1]-v[i])-abs(i-med1))%10000003;
+        
+    }
+    return res1;
+}
