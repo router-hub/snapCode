@@ -1,0 +1,13 @@
+public class Solution {
+    public int titleToNumber(String A) {
+        if(A == null || A.length() == 0)
+            return -1;
+        int sum = 0;
+        for(int i = 0; i < A.length(); i++){
+            sum *= 26; 
+            sum += A.charAt(i) - 'A' +1; 
+            
+        }
+        return sum;
+    }
+}

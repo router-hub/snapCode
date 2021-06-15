@@ -1,0 +1,29 @@
+public class Solution {
+    public ArrayList<ArrayList<Integer>> fourSum(ArrayList<Integer> a, int b) {
+        LinkedHashSet<ArrayList<Integer>> res = new LinkedHashSet<>();
+        Collections.sort(a);
+        int len=a.size();
+        for(int i=0; i<len-3; i++) {
+            for(int j=i+1; j<len-2; j++) {
+                int l=j+1, h=len-1, d=b-a.get(i)-a.get(j);
+                while(l<h) {
+                    int s=a.get(l)+a.get(h);
+                    if(s==d) {
+                        ArrayList<Integer> sol = new ArrayList<>();
+                        sol.add(a.get(i));
+                        sol.add(a.get(j));
+                        sol.add(a.get(l));
+                        sol.add(a.get(h));
+                        res.add(sol);
+                        l++;
+                        h--;
+                    } else if(s<d)
+                        l++;
+                    else
+                        h--;
+                }
+            }
+        }
+        return new ArrayList<>(res);
+    }
+}

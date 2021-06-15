@@ -1,0 +1,35 @@
+public class Solution {
+    public int getrp(int[] C, int n, int mid){
+        int rp = 1;
+        int total = 0;
+        for(int i : C){
+            total += i;
+            if(total > mid){
+                total = i;
+                rp++;
+            }
+        }
+        return rp;
+    }
+    public int paint(int A, int B, int[] C) {
+        int n = C.length;
+        int lo = Integer.MIN_VALUE, hi = 0;
+        for(int i : C){
+            lo = Math.max(lo,i);
+            hi+=i;
+        }
+        int mid;
+        while(lo < hi){
+            mid = lo + (hi-lo)/2;
+            int rp = getrp(C,n, mid);
+            if(rp <= A){
+                hi = mid;
+            }
+            else{
+                lo = mid+1;
+            }
+        }
+        return (int)((long)lo*(long)B%10000003);
+    }
+}
+
