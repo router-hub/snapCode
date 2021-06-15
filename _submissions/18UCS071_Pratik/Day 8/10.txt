@@ -1,0 +1,9 @@
+from collections import defaultdict
+class Solution:
+    # @param A : tuple of strings
+    # @return a list of list of integers
+    def anagrams(self, A):
+        d = defaultdict(list)
+        for i in range(len(A)):
+            d["".join(sorted(A[i]))].append(i+1)
+        return [v for k,v in d.items()]

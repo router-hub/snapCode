@@ -1,0 +1,8 @@
+class Solution:
+    # @param A : tuple of integers
+    # @return an integer
+    def singleNumber(self, A):
+        a=0
+        for i in range(len(A)):
+            a=a^A[i]
+        return a
