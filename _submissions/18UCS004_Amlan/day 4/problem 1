@@ -1,0 +1,17 @@
+public class Solution {
+    public int maxArr(ArrayList<Integer> A) {
+        int mina=Integer.MAX_VALUE,
+        minb=Integer.MAX_VALUE,
+        maxa=Integer.MIN_VALUE,
+        maxb=Integer.MIN_VALUE;
+        
+        for(int i=0;i<A.size();i++)        {
+            mina=Math.min(A.get(i)+i,mina);
+            maxa=Math.max(A.get(i)+i,maxa);
+            minb=Math.min(A.get(i)-i,minb);
+            maxb=Math.max(A.get(i)-i,maxb);
+        }
+        int max=Math.max(Math.abs(maxa-mina),Math.abs(maxb-minb));
+        return max;
+    }
+}

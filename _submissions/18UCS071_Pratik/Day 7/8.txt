@@ -1,0 +1,9 @@
+class Solution:
+	# @param A : list of integers
+	# @return an integer
+	def largestRectangleArea(self, A):
+        A.sort(reverse=True)
+        B=[]
+        for i in range(len(A)):
+            B.append((A[i])*(i+1))
+        return max(B)

@@ -1,0 +1,37 @@
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     ListNode(int x) { val = x; next = null; }
+ * }
+ */
+public class Solution {
+    public ListNode mergeTwoLists(ListNode A, ListNode B){
+        ListNode temp = new ListNode(-1);
+        ListNode c = temp;
+        helper(A, B, c);
+        return temp.next;
+    }
+    public void helper(ListNode A, ListNode B, ListNode C){
+        if(A==null && B==null){
+            return;
+        }
+        else if(A==null && B!=null){
+            C.next = B;
+            return;
+        }
+        else if(A!=null && B==null){
+            C.next = A;
+            return;
+        }
+        else if(A.val < B.val){
+            C.next = A;
+            helper(A.next, B, C.next);
+        }
+        else{
+            C.next = B;
+            helper(A, B.next, C.next);
+        }
+    }
+}

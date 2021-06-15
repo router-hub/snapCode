@@ -1,0 +1,36 @@
+public class Solution {
+    int findNextLargest(ArrayList<Integer> arr, int low, int target) {
+        int high  = arr.size() - 1, mid;
+        while(low <= high) {
+            mid = (low + high) / 2;
+            if(arr.get(mid) < target) 
+                low = mid + 1;
+            else 
+                high = mid - 1;
+        }
+        return low;
+    }
+    public int nTriang(ArrayList<Integer> arr) {
+        int n  = arr.size();
+        if(n < 3) 
+            return 0;
+        Collections.sort(arr);
+        int curSumNext = Integer.MAX_VALUE, j, curSum, ans = 0;
+        for(int i = 0; i < n - 2; i++) {
+            j = i + 1;
+            curSumNext = j + 1;
+            while(j < n){
+              curSum = arr.get(i) + arr.get(j);
+              if(curSumNext >= n || curSum <= arr.get(curSumNext)) {
+                  ans = (ans % 1000000007) + (curSumNext-j-1);
+              }
+              else {
+                  curSumNext = findNextLargest(arr, curSumNext+1, curSum);
+                  ans = (ans % 1000000007) + (curSumNext-j-1);
+              }
+              j++;
+            }
+        }
+        return ans;
+    }
+}

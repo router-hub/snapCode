@@ -1,0 +1,11 @@
+public class Solution {
+    public String convertToTitle(int A) {
+        StringBuilder result = new StringBuilder();
+        while (A > 0) {
+            A = A - 1;
+            result.insert(0, (char)('A' + (A % 26)));
+            A = (int)(A / 26);
+        }
+        return result.toString();
+    }
+}

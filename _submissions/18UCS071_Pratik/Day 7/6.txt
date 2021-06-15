@@ -1,0 +1,32 @@
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return a list of integers
+    def maxone(self, A, B):
+        l = 0
+        r = 0
+        
+        count = 0
+        size = 0
+        
+        zeroes = 0
+        
+        while(r < len(A)):
+            
+            if zeroes <= B:
+                if A[r] == 0:
+                    zeroes += 1
+                r += 1
+            
+            
+            if zeroes > B:
+                if A[l] == 0:
+                    zeroes -= 1
+                l+= 1
+            
+            if (r - l) > size and zeroes <= B:
+                size = r - l 
+                count = l
+        
+        result = [i for i in range(count, count+size)]
+        return result

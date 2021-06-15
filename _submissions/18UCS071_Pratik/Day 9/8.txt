@@ -1,0 +1,10 @@
+class Solution:
+    # @param A : tuple of integers
+    # @param B : integer
+    # @return a list of integers
+    def slidingMaximum(self, A, B):
+        
+        C=[]
+        for i in range(len(A)-B+1):
+            C.append(max(A[i:i+B]))
+        return C

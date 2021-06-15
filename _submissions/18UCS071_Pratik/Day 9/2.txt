@@ -1,0 +1,23 @@
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def reverse(self, A):
+        if A<0:
+            B=list(str(abs(A)))
+            for i in range(len(B)):
+                if B[-1]=="0":
+                    B.pop(-1)
+                else:
+                    break
+            B.append("-")
+            B=B[::-1]
+        else:
+            B=list(str(A))
+            for i in range(len(B)):
+                if B[-1]=="0":
+                    B.pop(-1)
+                else:
+                    break
+            B=B[::-1]
+
+        return("".join(B))
