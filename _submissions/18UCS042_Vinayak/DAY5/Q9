@@ -1,0 +1,35 @@
+vector<vector<int> > Solution::subsetsWithDup(vector<int> &A) 
+{
+set<vector<int>> a;
+vector<vector<int>> c;
+int n =A.size();
+int count = pow(2, n);
+vector<int> b;
+int prev=0;
+sort(A.begin(),A.end());
+for (int i = 0; i < count; i++)
+{
+for (int j = 0; j < n; j++)
+{
+int f=(1 << j);
+int t= i & f;
+if (t!= 0)
+{
+b.push_back(A[j]);
+}
+
+    }
+    sort(b.begin(),b.end());
+    a.insert(b);
+    if(a.size()!=prev)
+    {
+        c.push_back(b);
+        prev++;
+    }
+    b.clear();
+  
+}
+sort(c.begin(),c.end());
+return c;
+
+}

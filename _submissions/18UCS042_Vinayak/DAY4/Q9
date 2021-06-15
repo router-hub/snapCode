@@ -1,0 +1,18 @@
+void solve(int A,int B,vector<vector > &ans,vector &v,int index){
+if(v.size()==B){
+ans.push_back(v);
+return;
+}
+for(int i=index;i<=A;i++){
+v.push_back(i);
+solve(A,B,ans,v,i+1);
+v.pop_back();
+}
+}
+
+vector<vector > Solution::combine(int A, int B) {
+vector<vector > ans;
+vector v;
+solve(A,B,ans,v,1);
+return ans;
+}
