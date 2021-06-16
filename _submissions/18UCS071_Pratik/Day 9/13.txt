@@ -1,0 +1,18 @@
+class Solution:
+    # @param A : string
+    # @param B : string
+    # @param C : string
+    # @return an integer
+    def isInterleave(self, A, B, C):
+        if len(A) + len(B) != len(C):
+            return 0
+        f = [[0] * (len(B) + 1) for _ in range(len(A) + 1)]
+        f[0][0] = 1
+        for i in range(len(A) + 1):
+            for j in range(len(B) + 1):
+                if i > 0 and A[i - 1] == C[i + j - 1]:
+                    f[i][j] = f[i][j] or f[i - 1][j]
+                if j > 0 and B[j - 1] == C[i + j - 1]:
+                    f[i][j] = f[i][j] or f[i][j - 1]
+        return f[-1][-1]
+

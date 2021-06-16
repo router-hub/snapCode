@@ -1,0 +1,11 @@
+class Solution:
+    # @param A : list of integers
+    # @param B : list of integers
+    # @return an integer
+    def mice(self, A, B):
+        A.sort()
+        B.sort()
+        C=zip(A,B)
+        D=[abs(i-j) for i,j in C]
+        return max(D)
+        

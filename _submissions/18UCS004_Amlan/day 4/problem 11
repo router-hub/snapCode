@@ -1,0 +1,18 @@
+public class Solution {
+    public int nchoc(int A, ArrayList<Integer> B) {
+        PriorityQueue<Integer> pq = new PriorityQueue<Integer>(Collections.reverseOrder());
+        int mod = 1000000007;
+        for(int temp : B){
+            pq.add(temp);
+        }
+        int ans = 0;
+        while(!pq.isEmpty() && A!=0){
+            int val  = pq.remove();
+            int re_val = val/2;
+            ans = (ans%mod+val%mod)%mod;
+            pq.add(re_val);
+            A--;
+        }
+        return ans;
+    }
+}

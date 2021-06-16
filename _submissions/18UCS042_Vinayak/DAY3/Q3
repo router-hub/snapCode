@@ -1,0 +1,49 @@
+bool valid(vector<int>v,int k,int mx )
+{
+    int st=1;
+    int s=v.size();
+    int sm=0;
+    for(int i=0;i<s;i++)
+    {
+        sm+=v[i];
+        if(sm>mx)
+        {
+            sm=v[i];
+            st++;
+        }
+        if(st>k)
+        return false;
+    }
+    return true;
+}
+
+
+
+int Solution::books(vector<int> &A, int B) {
+    int m=0;
+    int s=0;
+    int res = -1;
+    for(auto i: A)
+    {
+      m=max(m,i);  
+      s+=i;
+    }
+    int start = m;
+    int end=s;
+    int si=A.size();
+    if(si<B)return -1;
+    while(start <= end)
+    {
+        int mid = start + (end -start)/2;
+        if(valid(A,B,mid)==true)
+        {
+            res=mid;
+            end=mid-1;
+        }
+        else
+        {
+            start=mid+1;
+        }
+    }
+    return res;
+}

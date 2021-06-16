@@ -1,0 +1,22 @@
+vector<int> Solution::plusOne(vector<int> &A) {
+    reverse(A.begin(),A.end());
+    int s =A.size();
+    int rem=1;
+    for(int i=0;i<s;i++)
+{
+    A[i]=A[i]+rem;
+    rem=A[i]/10;
+    A[i]%=10;
+    
+}
+if(rem>0)
+{
+    A.push_back(rem);
+}
+while(A.back()==0)
+{
+    A.pop_back();
+}
+reverse(A.begin(),A.end());
+return A;
+}

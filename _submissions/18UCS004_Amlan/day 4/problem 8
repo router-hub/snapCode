@@ -1,0 +1,88 @@
+class Solution {
+    class Node{
+        int val, min;
+        Node next;
+        
+        Node(int val, int min){
+            this.val = val;
+            this.min = min;
+            this.next = null;
+        }
+    }
+    Node head;
+    public void push(int x) {
+        Node l1;
+        if(head == null){
+            l1 = new Node(x, x);
+        } else {
+            l1 = new Node(x, Math.min(x, head.min));
+            l1.next = head;
+        }
+        head = l1;
+    }
+ 
+    public void pop() {
+        if(head != null){
+            head = head.next;
+        }
+    }
+ 
+    public int top() {
+        if(head == null){
+            return -1;
+        }
+        return head.val;
+    }
+ 
+    public int getMin() {
+        if(head == null){
+            return -1;
+        }
+        return head.min;
+    }
+}
+
+
+// class Solution {
+//     int min = Integer.MIN_VALUE;
+//     Stack<Integer> s = new Stack<Integer>();
+//     public void push(int x) {
+//         if(s.isEmpty()){
+//             s.push(x);
+//             min = x;
+//         }
+//         if (x < min)        {
+//             s.push(2*x - min);
+//             min = x;
+//         }
+//         else
+//             s.push(x);
+//     }
+
+//     public void pop() {
+//         if (s.isEmpty())        
+//             return;
+//         Integer t = s.pop();
+//         if (t < min)
+//             min = 2*min - t;
+//     }
+
+//     public int top() {
+//         if (s.isEmpty())
+//             return -1;
+//         Integer t = s.peek(); 
+//         if (t < min)
+//             return min;
+//         else if(t >= min)
+//             return t;
+//         else
+//             return -1;
+//     }
+
+//     public int getMin() {
+//         if(s.isEmpty())
+//             return -1;
+//         else
+//             return min;
+//     }
+// }

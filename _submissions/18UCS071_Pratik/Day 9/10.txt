@@ -1,0 +1,19 @@
+class Solution:
+    # @param A : list of integers
+    # @return a list of integers
+    def equal(self, A):
+        hasht = {}
+        ans = []
+        for i in range(len(A)-1):
+            for j in range(i+1, len(A)):
+                if A[i] + A[j] in hasht:
+                    final = []
+                    final.extend(hasht[A[i]+A[j]])
+                    final.append(i)
+                    final.append(j)
+                    if len(final) == len(set(final)):
+                        ans.append(final)
+                else:
+                    hasht[A[i] + A[j]] = [i, j]
+        ans.sort()
+        return ans[0]
