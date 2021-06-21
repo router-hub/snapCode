@@ -9,5 +9,7 @@ delete temp;
 curr = curr->next;
 }
 }
+  
+  
 return A;
 }
