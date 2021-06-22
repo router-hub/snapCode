@@ -1,0 +1,8 @@
+int Solution::titleToNumber(string A) {
+    int ans=0,n=A.size();
+    for(int i=0;i<n;i++)
+    {
+        ans+=(A[i]-'A'+1)*pow(26,n-i-1);
+    }
+    return ans;
+}

@@ -1,0 +1,19 @@
+string Solution::convertToTitle(int A) {
+    string ans;
+    // A=36291;
+    while(A)
+    {
+        if(A%26==0)
+        {
+            ans+="Z";
+            A-=26;
+        }
+        else
+        {
+            ans+=('A'+A%26-1);
+        }
+        A/=26;
+    }
+    reverse(ans.begin(),ans.end());
+    return ans;
+}

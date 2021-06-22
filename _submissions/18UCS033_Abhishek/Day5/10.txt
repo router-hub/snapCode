@@ -1,0 +1,10 @@
+int Solution::diffPossible(const vector<int> &A, int B) {
+    unordered_set<int> s;
+    for(int i=0;i<A.size();i++)
+    {
+        if(s.count(A[i]+B)||s.count(A[i]-B))
+        return 1;
+        s.insert(A[i]);
+    }
+    return 0;
+}

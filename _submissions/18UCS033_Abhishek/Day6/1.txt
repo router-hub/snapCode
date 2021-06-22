@@ -1,0 +1,12 @@
+int Solution::maxArr(vector<int> &A) {
+    int min1=INT_MAX,max1=INT_MIN,min2=INT_MAX,max2=INT_MIN;
+    for(int i=0;i<A.size();i++)
+    {
+        int x=A[i]-i,y=A[i]+i;
+        min1=min(min1,x);
+        max1=max(max1,x);
+        min2=min(min2,y);
+        max2=max(max2,y);
+    }
+    return max(max1-min1,max2-min2);
+}

@@ -1,0 +1,20 @@
+vector<vector<int>> ans;
+void help(vector<int> &A,int ind,vector<int> &curr)
+{
+    ans.push_back(curr);
+    for(int i=ind;i<A.size();i++)
+    {
+        if(i!=ind&&A[i-1]==A[i])
+        continue;
+        curr.push_back(A[i]);
+        help(A,i+1,curr);
+        curr.pop_back();
+    }
+}
+vector<vector<int> > Solution::subsetsWithDup(vector<int> &A) {
+    vector<int> curr;
+    ans.clear();
+    sort(A.begin(),A.end());
+    help(A,0,curr);
+    return ans;
+}
