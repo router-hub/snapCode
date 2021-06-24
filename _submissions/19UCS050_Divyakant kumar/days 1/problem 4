@@ -1,0 +1,16 @@
+int Solution::isPalindrome(string s) {
+    string k="";
+        for(int i=0;i<s.length();i++){
+            if((s[i]>='a'&&s[i]<='z')||(s[i]>='A'&&s[i]<='Z')||s[i]>='0'&&s[i]<='9'){
+                k+=s[i];
+            }
+        }
+        transform(k.begin(), k.end(), k.begin(), ::tolower);
+        int i=0,j = k.length()-1;
+        //cout<<k;
+        while(i<=j){
+            if(k[i]!=k[j]){return 0;}
+            i++;j--;
+        }
+        return 1;
+}

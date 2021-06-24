@@ -1,0 +1,24 @@
+int Solution::braces(string A) {
+    stack<char>s;
+    for(int i=0;i<A.size();i++){
+       if(A[i]==')'){
+           char top = s.top();
+           s.pop();
+           bool flag = true;
+           while(!s.empty()&&top!='('){
+               if (top == '+' || top == '-' ||top == '*' || top == '/')
+                    {flag = false;}
+                top = s.top();
+                s.pop();
+           }
+           if(flag == true){
+               return 0;
+           }
+           
+       }
+       else{
+           s.push(A[i]);
+       }
+       return 1;
+    }
+}

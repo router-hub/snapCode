@@ -1,0 +1,16 @@
+ListNode* Solution::solve(ListNode* head) {
+    vector<int>v;
+       ListNode *temp=head,*temp2 = head;
+        while(temp!=NULL){
+            v.push_back(temp->val);
+          temp = temp->next;
+        }
+        sort(v.begin(),v.end());
+        int i=0;
+        while(temp2!=NULL){
+          temp2->val = v[i];
+            i++;
+            temp2 = temp2->next;
+        }
+        return head;
+}

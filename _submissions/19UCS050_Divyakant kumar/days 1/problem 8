@@ -1,0 +1,21 @@
+int Solution::solve(string s) {
+    stack<char>p;
+        char x;
+       // p.push(s[0]);
+       for(int i=0;i<s.length();i++){
+           if(p.size()==0){p.push(s[i]);}
+           else{
+               x = p.top();
+               p.push(s[i]);
+               if(p.top()==')'&&x=='('){
+                   p.pop();
+                   p.pop();
+               }
+              
+       }
+       }
+        if(p.size()>0){
+            return false;
+        }
+        return true;
+    }
