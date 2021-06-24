@@ -1,0 +1,67 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+ ListNode* mergetwolist(ListNode *l1,ListNode *l2)
+ {
+     if(l1==NULL&&l2==NULL)
+     return NULL;
+     if(!l1)
+     return l2;
+     if(!l2)
+     return l1;
+     ListNode* h=NULL,*curr=NULL;
+     while(l1&&l2)
+     {
+         if(l1->val>l2->val)
+         {
+             if(h==NULL)
+             {
+                 h=l2;
+                 curr=l2;
+             }
+             else
+             {
+                 curr->next=l2;
+                 curr=l2;
+             }
+             l2=l2->next;
+         }
+         else
+         {
+             if(h==NULL)
+             {
+                 h=l1;
+                 curr=l1;
+             }
+             else
+             {
+                 curr->next=l1;
+                 curr=l1;
+             }
+             l1=l1->next;
+         }
+     }
+     if(!l2)
+     curr->next=l1;
+     else
+     curr->next=l2;
+     return h;
+ }
+ListNode* Solution::mergeKLists(vector<ListNode*> &A) {
+    // Do not write main() function.
+    // Do not read input, instead use the arguments to the function.
+    // Do not print the output, instead return values as specified
+    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details
+    int n=A.size();
+    if(n==0)
+    return NULL;
+    ListNode *head=A[0];
+    for(int i=1;i<n;i++)
+    head=mergetwolist(head,A[i]);
+    return head;
+}

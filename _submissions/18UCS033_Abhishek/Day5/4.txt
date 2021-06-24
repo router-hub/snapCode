@@ -1,0 +1,15 @@
+int Solution::strStr(const string A, const string B) {
+    int n=A.size(),m=B.size();
+    if(n==0||m==0)
+    return -1;
+    int ans=-1,i=0;
+    while(i<=n-m)
+    {
+        int currx=i,curry=0;
+        while(currx<n&&A[currx]==B[curry])currx++,curry++;
+        if(curry==m)
+        return i;
+        i++;
+    }
+    return -1;
+}

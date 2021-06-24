@@ -1,0 +1,23 @@
+vector<vector<int>> ans;
+vector<int> curr;
+void comb(int i,int a,int k)
+{
+    if(curr.size()==k)
+    {
+        ans.push_back(curr);
+        return;
+    }
+    if(i>a)
+    return;
+    curr.push_back(i);
+    comb(i+1,a,k);
+    curr.pop_back();
+    comb(i+1,a,k);
+    
+}
+vector<vector<int> > Solution::combine(int A, int B) {
+    ans.clear();
+    curr.clear();
+    comb(1,A,B);
+    return ans;
+}

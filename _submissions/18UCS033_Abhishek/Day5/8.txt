@@ -1,0 +1,54 @@
+int Solution::maxSpecialProduct(vector<int> &A) {
+    vector<int> R,L;
+    stack<int> s;
+    int n=A.size();
+    R.push_back(0);
+    s.push(n-1);
+    for(int i=n-2;i>=0;i--)
+    {
+        while(s.size()&&A[s.top()]<=A[i])
+        {
+            s.pop();
+        }
+        if(s.empty())
+        {
+            R.push_back(0);
+        }
+        else
+        {
+            R.push_back(s.top());
+        }
+        s.push(i);
+    }
+    reverse(R.begin(),R.end());
+    // for(int i=0;i<n;i++)
+    // cout<<R[i]<<" ";
+    L.push_back(0);
+    while(s.size())s.pop();
+    s.push(0);
+    for(int i=1;i<n;i++)
+    {
+        while(s.size()&&A[s.top()]<=A[i])
+        {
+            s.pop();
+        }
+        if(s.empty())
+        {
+            L.push_back(0);
+        }
+        else
+        {
+            L.push_back(s.top());
+        }
+        s.push(i);
+    }
+    // for(int i=0;i<n;i++)
+    // cout<<L[i]<<" ";
+    long long int ans=0;
+    for(int i=1;i<n-1;i++)
+    {
+        ans=max(ans,((long long int)R[i]*(long long int)L[i]));
+    }
+    ans%=1000000007;
+    return ans;
+}
