@@ -1,0 +1,15 @@
+vector<int> Solution::plusOne(vector<int> &digits) {
+    reverse(digits.begin(), digits.end());
+digits[0]+=1;
+int sum = 0, carry = 0;
+for(int i=0;i<digits.size();i++) {
+    int sum = digits[i]+carry;
+    carry = sum/10;
+    sum = sum%10;
+    digits[i] = sum;
+}
+if(carry==1)digits.push_back(1);
+while(digits.size()>0 && digits[digits.size()-1]==0)digits.pop_back();
+reverse(digits.begin(), digits.end());
+return digits;
+}

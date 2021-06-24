@@ -1,0 +1,19 @@
+int dp[701][701];
+int countall(string A,int i,string B,int j)
+{
+    if(j==B.size())
+    return 1;
+    if(i==A.size())
+    return 0;
+    if(dp[i][j]!=-1)
+    return dp[i][j];
+    if(A[i]==B[j])
+    dp[i][j]=countall(A,i+1,B,j+1)+countall(A,i+1,B,j);
+    else
+    dp[i][j]=countall(A,i+1,B,j);
+    return dp[i][j];
+}
+int Solution::numDistinct(string A, string B) {
+    memset(dp,-1,sizeof(dp));
+    return countall(A,0,B,0);
+}

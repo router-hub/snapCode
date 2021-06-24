@@ -1,0 +1,19 @@
+class Solution:
+    # @param A : string
+    # @return a strings
+    def solve(self, A):
+        B = []
+        C = []
+        output = ""
+        for i in A:
+            if i in B:
+                C.append(i)
+                B.remove(i)
+            else:
+                if i not in C:
+                    B.append(i)
+            if len(B) == 0:
+                output= output + '#'
+            else:
+                output = output + B[0]
+        return output

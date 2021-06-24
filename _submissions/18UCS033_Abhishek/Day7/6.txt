@@ -1,0 +1,44 @@
+vector<int> Solution::maxone(vector<int> &A, int B) {
+    int ans=0,ind=0;
+    int i=0,j=0,n=A.size();
+    for(j;j<n;j++)
+    {
+        if(A[j]==0)
+        {
+            B--;
+            if(B<0)
+            break;
+        }
+    }
+    ans=j;
+    while(i<n&&j<n)
+    {
+        
+        j++;
+        while(j<n)
+        {
+            if(A[j]==0)
+            {
+                break;
+            }
+            j++;
+        }
+        while(i<n)
+        {
+            if(A[i]==0)
+            {
+                i++;
+                break;
+            }
+            i++;
+        }
+        if(ans<j-i){
+            ind=i;
+            ans=j-i;
+        }
+    }
+    vector<int> v;
+    while(ans--)
+    v.push_back(ind++);
+    return v;
+}

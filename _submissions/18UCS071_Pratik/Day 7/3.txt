@@ -1,0 +1,8 @@
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return an integer
+    def searchInsert(self, A, B):
+        A.append(B)
+        A.sort()
+        return A.index(B)

@@ -1,0 +1,35 @@
+vector<int> Solution::plusOne(vector<int> &A) {
+    vector<int> res;
+    int carry = 0;
+    int n = A.size();
+    if(A[n - 1] < 9){
+        res.push_back(A[n - 1] + 1);
+    }
+    else{
+        res.push_back(0);
+        carry = 1;
+    }
+    for(int i  = A.size() - 2; i >= 0; i--){
+        if(A[i] < 9){
+            res.push_back(A[i] + carry);
+            carry = 0;
+        }
+        if(A[i] == 9){
+            if(carry)  res.push_back(0);
+            else  res.push_back(A[i]);
+        }
+    }
+    if(carry)  res.push_back(carry);
+    reverse(res.begin(), res.end());
+    int cnt = 0;
+    for(int i = 0; i < res.size(); i++){
+        if(res[i] == 0){
+            cnt++;
+        }
+        else{
+            break;
+        }
+    }
+    res.erase(res.begin(), res.begin() + cnt);
+    return res;
+}

@@ -1,0 +1,18 @@
+bool is_amazing(char C)
+{
+    string s = "aeiouAEIOU";
+    for(auto i :s)
+    if(i==C) return true;
+    return false;
+}
+
+
+int Solution::solve(string A) {
+    int k=A.size(),s=0;
+    for(int i=0;i<k;i++)
+    if(is_amazing(A[i])){
+        s+=(k-i);
+        s%=10003;
+    }
+    return s;
+}

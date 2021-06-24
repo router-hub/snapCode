@@ -1,0 +1,28 @@
+public class Solution {
+    public int searchInsert(ArrayList<Integer> a, int b) {
+        if(a.size() == 0)
+            return 0;
+        int low = 0;
+        int high = a.size() - 1;
+        int mid = 0;
+        boolean b1 = true;
+        while(low <= high)
+        {
+            mid = low + (high - low) / 2;
+            if(a.get(mid) == b)
+                return mid;
+            else if(a.get(mid) > b){
+                high = mid-1;
+                b1 = true;
+            }
+            else{
+                low = mid + 1;
+                b1 = false;
+            }
+        }
+        if(b1 == true)
+            return mid;
+        else 
+            return mid + 1;
+    }
+}

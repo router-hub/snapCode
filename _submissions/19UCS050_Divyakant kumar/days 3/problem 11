@@ -1,0 +1,9 @@
+vector<int> Solution::solve(vector<int> &A, int B) {
+    {vector<int>v;
+        sort(A.begin(),A.end());
+        for(int i=0;i<B;i++){
+           v.push_back(A[A.size()-1-i]); 
+        }
+        return v;// code here
+    }
+}

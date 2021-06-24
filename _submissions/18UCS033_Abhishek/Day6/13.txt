@@ -1,0 +1,36 @@
+map<pair<string,string>,bool> m;
+bool help(const string A,const string B)
+{
+    // cout<<A<<" "<<B<<"\n";
+    if(A==B)
+    return 1;
+    pair<string,string> p={A,B};
+    if(m.count(p)) return m[p];
+    int n=A.size();
+    int a[128]={0};
+    for(int i=0;i<n;i++)
+    {
+        a[A[i]-'A']++;
+        a[B[i]-'A']--;
+    }
+    for(int k=0;k<128;k++)
+    {
+        if(a[k]!=0)
+        return 0;
+    }
+    if(n<=2)
+    return 1;
+    for(int i=1; i<=n-1; i++)
+    {
+        if( help(A.substr(0,i), B.substr(0,i)) && help(A.substr(i), B.substr(i)))
+            return m[p]=1;
+        if( help(A.substr(0,i), B.substr(n-i)) && help(A.substr(i), B.substr(0,n-i)))
+            return m[p]=1;
+    }
+    return m[p]=0;
+}
+int Solution::isScramble(const string A, const string B) {
+    m.clear();
+    return help(A,B);
+    
+}

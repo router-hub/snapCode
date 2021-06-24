@@ -1,0 +1,21 @@
+vector<int> Solution::primesum(int A) {
+    vector<bool>v(A+1);
+    //memset(isprime,1,sizeof(isprime));
+    v[0] = 0;v[1] = 0;
+    for(int i=2;i<=A;i++)
+        v[i]=1;
+    for(int i=2;i*i<=A;i++){
+        if(v[i]){
+            for(int j=i*2;j<=A;j+=i)
+             v[j]=0;
+        }
+    }
+    vector<int>ans(2);
+    for(int i=2;i<=A/2;i++){
+        if(v[i]&&v[A-i]){
+            ans[0]=i;
+            ans[1]=A-i;
+            return ans;
+        }
+    }
+}

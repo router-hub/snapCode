@@ -1,0 +1,21 @@
+void solve(vector<int> &A, set<vector<int> > &s, vector<int> &vec, int B, int index = 0) {
+    if(B == 0) {
+        s.insert(vec);
+        return;
+    }
+    if(index >= A.size())    return;
+    vec.push_back(A[index]);
+    solve(A, s, vec, B - A[index], index + 1);
+    vec.pop_back();
+    solve(A, s, vec, B, index + 1);
+}
+vector<vector<int> > Solution::combinationSum(vector<int> &A, int B) {
+    sort(A.begin(), A.end());
+    set<vector<int>> s;
+    vector<vector<int>> res;
+    vector<int> vec;
+    solve(A, s, vec, B);
+    for(auto it: s)
+        res.push_back(it);
+    return res;    
+}

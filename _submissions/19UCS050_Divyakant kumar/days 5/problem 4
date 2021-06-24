@@ -1,0 +1,15 @@
+int Solution::strStr(const string A, const string B) {
+    
+    int n = B.size();
+        if(n==0){return 0;}
+        if(n>A.size()){
+            return -1;
+        }
+        for(int i=0;i<A.size();i++){
+            if(B == A.substr(i,n)){
+                return i;
+            }
+        }
+        return -1;
+    
+}

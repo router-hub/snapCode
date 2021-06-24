@@ -1,0 +1,8 @@
+import math
+class Solution:
+    # @param A : tuple of integers
+    # @return an integer
+    def majorityElement(self, A):
+        for i in range(len(A)):
+            if A.count(A[i])>math.floor(len(A)/2):
+                return A[i]

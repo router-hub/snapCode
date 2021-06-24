@@ -1,0 +1,9 @@
+int Solution::divide(int A, int B) {
+    int ans=0;
+    while(B>=1){
+        if(B&1==1) ans+=A;
+        B=B>>1;
+        A+=A;
+    }
+    return ans;
+}

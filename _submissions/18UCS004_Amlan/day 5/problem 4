@@ -1,0 +1,28 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public int strStr(final String A, final String B) {
+        char[] chars = A.toCharArray();
+        char[] charsToSearch = B.toCharArray();
+        int resultIdx = -1;
+        if (charsToSearch.length > chars.length) 
+            return resultIdx;
+        for (int j = 0; j < chars.length; j++) {
+            if (chars[j] == charsToSearch[0]) {
+                resultIdx = j;
+                if (charsToSearch.length > chars.length - j) {
+                    resultIdx = -1;
+                    break;
+                }
+                for (int i = 1; i < charsToSearch.length; i++) {
+                    if (chars[j + i] != charsToSearch[i]) {
+                        resultIdx = -1;
+                        break;
+                    }
+                    if(i == charsToSearch.length - 1) 
+                        return resultIdx;
+                }
+            }
+        }
+        return resultIdx;
+    }
+}

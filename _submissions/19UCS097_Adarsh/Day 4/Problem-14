@@ -1,0 +1,14 @@
+int Solution::candy(vector<int> &A) {
+    int n=A.size();
+    if(n==0) return n;
+    vector<int>v(n,1);
+    for(int i=1;i<n;i++){
+        if(A[i]>A[i-1] && v[i]<=v[i-1]) v[i]=1+v[i-1];
+    }
+    for(int i=n-2;i>=0;i--){
+        if(A[i]>A[i+1] && v[i]<=v[i+1]) v[i]=1+v[i+1];
+    }
+    long long sum=0;
+    for(int i=0;i<v.size();i++) sum+=v[i];
+    return sum;
+}

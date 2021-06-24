@@ -1,0 +1,18 @@
+int Solution::diffPossible(vector<int> &A, int B) {
+    sort(A.begin(),A.end());
+    int i=0,j=1;
+    while(j<A.size())
+    {
+        if(A[j]-A[i]==B)
+        return 1;
+        if(A[j]-A[i]>B)
+        {
+            i++;
+            if(i==j)
+            j++;
+        }
+        else
+        j++;
+    }
+    return 0;
+}

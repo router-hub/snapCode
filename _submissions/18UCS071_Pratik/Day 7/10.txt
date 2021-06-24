@@ -1,0 +1,15 @@
+from itertools import combinations
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return an integer
+    def solve(self, A, B):
+        D=[]
+        count=0
+        C=list(combinations(A,2))
+        for i in C:
+            D.append(list(i))
+        for i in D:
+            if i[0]^i[1]==B:
+                count+=1
+        return count

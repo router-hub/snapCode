@@ -1,0 +1,48 @@
+bool is_valid(vector<int>v,int k,int mx )
+{
+    int st=1;
+    int s=v.size();
+    long long  sm=0;
+    for(int i=0;i<s;i++)
+    {
+        sm+=v[i];
+        if(sm>mx)
+        {
+            sm=v[i];
+            st++;
+        }
+        if(st>k)
+        return false;
+    }
+    return true;
+}
+
+
+int Solution::paint(int A, int B, vector<int> &C) 
+{
+    int start=INT_MIN,end=0;
+    for(int i=0;i<C.size();i++)
+    {
+        start=max(start,C[i]);
+        end+=C[i];
+    }
+    if(C.size()<=A)
+    {
+        return (start*B)%10000003;
+    }
+    long long int ans=start;
+    while(start<=end)
+    {
+        int mid=start+(end-start)/2;
+        if(is_valid(C,A,mid))
+        {
+            ans=mid;
+            end=mid-1;
+        }
+        else
+        {
+            start=mid+1;
+        }
+    }
+    return (ans*B)%10000003;
+}

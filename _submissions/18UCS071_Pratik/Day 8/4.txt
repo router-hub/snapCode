@@ -1,0 +1,24 @@
+from math import gcd
+def lcm(x, y):
+    return x * y // gcd(x, y)
+    
+class Solution:
+    # @param A : list of strings
+    # @return an integer
+    def solve(self, A):
+        arr=[]
+        for i in range(len(A)):
+            if A[i]=='a'*len(A[i]) or A[i]=='b'*len(A[i]):
+                arr.append(1)
+            else:
+                j=1
+                while(True):
+                    if ((j*(j+1))/2)%len(A[i])==0:
+                        arr.append(j)
+                        break
+                    j+=1
+        
+        ans=arr[0]
+        for i in range(1,len(arr)):
+            ans=lcm(ans,arr[i])    
+        return ans%(1000000000+7)

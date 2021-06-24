@@ -1,0 +1,43 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+  
+ 
+int Solution::lPalin(ListNode* head) {
+    if(head == NULL) return false;
+        if(head -> next == NULL) return true;
+        
+        ListNode *fast = head, *slow = head;
+        while(fast != nullptr && fast -> next != nullptr){
+            fast = fast -> next -> next;
+            slow = slow -> next;
+        }
+        
+            slow -> val = slow -> next -> val;
+            ListNode *toDelete = slow -> next;
+            slow -> next = toDelete -> next;
+            delete(toDelete);
+        }
+        
+        ListNode *prev = NULL, *nextNode;
+        while(slow != NULL){
+            nextNode = slow -> next;
+            slow -> next = prev;
+            prev = slow;
+            slow = nextNode;
+        }
+        ListNode *head2 = prev;
+        
+        
+        while(head != NULL && head2 != NULL){
+            if(head2 -> val != head -> val) return false;
+            head2 = head2 -> next;
+            head = head -> next;
+        }
+        return true;
+}

@@ -1,0 +1,10 @@
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def isPalindrome(self, A):
+        B=list(str(A))
+        C=B[::-1]
+        if B==C:
+            return 1
+        else:
+            return 0

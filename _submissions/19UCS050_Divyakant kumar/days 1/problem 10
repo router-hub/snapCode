@@ -1,0 +1,22 @@
+int Solution::colorful(int A) {
+    unordered_set<int>sh;
+    vector<int>v;
+    int d =A,count=0;
+    while(A>0){
+        v.push_back(A%10);
+        sh.insert(A%10);
+        A = A/10;
+        count++;
+    }
+    if(sh.size()<count){return 0;}
+    for(int i=0;i<v.size();i++){
+        int res = v[i];
+        for(int j=i+1;j<v.size();j++){
+            res *=v[j];
+            if(sh.find(res)!=sh.end()){return 0;}
+            sh.insert(res);
+        }
+    }
+    return 1;
+    
+}

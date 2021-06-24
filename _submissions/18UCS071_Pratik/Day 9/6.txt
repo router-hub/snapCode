@@ -1,0 +1,11 @@
+class Solution:
+    # @param A : list of integers
+    # @return an integer
+    def maxArea(self, A):
+        B=[]
+        if len(A)==1:
+            return 0
+        for i in range(len(A)-1):
+            for j in range(i,len(A)):
+                B.append((j-i)*min(A[i],A[j]))
+        return max(B)
