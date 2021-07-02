@@ -1,0 +1,55 @@
+// all 8- direction move
+int dx[8]={1,1,1,0,0,-1,-1,-1};
+int dy[8]={0,1,-1,1,-1,0,1,-1};
+string Solution::solve(int x, int y, int n, int r, vector<int> &X, vector<int> &Y) {
+   
+   vector<vector<bool>> mat(x+1,vector<bool>(y+1));
+  
+   // check each point is inside of any circle or not
+   for(int i=0;i<=x;i++)
+   for(int j=0;j<=y;j++){
+       
+       bool flag=false;
+       for(int k=0;k<X.size();k++){
+           if((X[k]-i)*(X[k]-i)+(Y[k]-j)*(Y[k]-j)<=r*r){
+               flag=true;
+               break;
+           }
+       }
+      mat[i][j]=flag;
+   }
+  
+   // if starting index is inside of any circle
+   if(mat[0][0]==true) return "NO";
+
+    queue<pair<int,int>> q;
+    q.push({0,0});
+    //using the same bool matrix to make visited
+    mat[0][0]=true;
+    
+    while(!q.empty()){
+       
+        pair<int,int> top=q.front();
+        q.pop();
+        
+        //reach our destination
+        if(top.first==x && top.second==y) return "YES";
+        
+        //go in all 8 possible directions
+        for(int i=0;i<8;i++){
+            int newx=dx[i]+top.first;
+            int newy=dy[i]+top.second;
+            
+            // if inside the boundary and not inside of any circle
+            if(newx>=0 && newx<=x && newy>=0 && newy<=y && mat[newx][newy]==false){
+              
+               q.push({newx,newy});
+               
+               //visit the co-ordinates    
+               mat[newx][newy]=true;
+            }
+        }
+    }
+
+    return "NO";
+}

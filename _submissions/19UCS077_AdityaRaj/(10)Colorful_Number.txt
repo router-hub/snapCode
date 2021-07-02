@@ -1,0 +1,23 @@
+int Solution::colorful(int A) {
+    vector<int> num;
+    int digits = 0;
+    while(A){
+        num.push_back(A%10);
+        A /= 10;
+        digits++;
+    }
+    reverse(num.begin(),num.end());
+    set<int> s;
+    int n=num.size();
+    for(int i=0;i<n;i++){
+        int product = 1;
+        for(int j=i;j<n;j++){
+            int size = s.size();
+            product *= num[j];
+            s.insert(product);
+            if(size == s.size()) return 0;
+        }
+    }
+    
+    return 1;
+}

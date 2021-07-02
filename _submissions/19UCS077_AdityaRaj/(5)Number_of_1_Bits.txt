@@ -1,0 +1,8 @@
+int Solution::numSetBits(unsigned int A) {
+    int ans=0;
+    while(A){
+        A = A&(A-1);
+        ans++;
+    }
+    return ans;
+}
