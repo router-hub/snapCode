@@ -1,0 +1,40 @@
+/**
+ * Definition for singly-linked list->
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+ListNode* Solution::solve(ListNode* A) {
+    int n=1;
+    ListNode *head = A, *tail = A, *curr = A;
+    while(tail->next != NULL){
+        tail = tail->next;
+        n++;
+    }
+    
+    if(n==1) return head;
+    
+    int repeat = 0;
+    while(curr->next != NULL){
+        if(curr->next->val == 1){
+            tail = tail->next = curr->next;
+            tail->next = NULL;
+            curr->next = curr->next->next;
+            repeat++;
+            if(repeat>=n) break;
+        }
+        else{
+            curr = curr->next;
+            repeat = 0;
+        }
+    }
+    if(head->val == 1){
+        tail = tail->next = head;
+        tail->next = NULL;
+        head = head->next;
+    }
+    
+    return head;
+}
